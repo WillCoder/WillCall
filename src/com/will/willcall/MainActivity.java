@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); 
     /************************ AdMod add *********************************/
         AdView adView = (AdView)this.findViewById(R.id.adView);
         AdRequest mAdRequest = new AdRequest();
