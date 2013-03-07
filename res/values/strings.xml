@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WillCall</string>
+    <string name="already_open">Open</string>
+    <string name="already_close">Closed</string>
+    <string name="btn_switch">Switch</string>
+    <string name="teststr">Press the button to see the effect</string>
+    <string name="btn_test">Test</string>
+    <string name="ringing_Time">Ring length: </string>
+    <string name="second">s</string>
+    
+    <string name="about_copyright">Copyright ® 2012 Will Team. All Rights Reserved</string>
+    <string name="about_info">Will工作室版权所有</string>
+</resources>
