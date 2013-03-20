@@ -1,8 +1,8 @@
 package com.will.willcall;
 
 import java.util.ArrayList;
-
-import com.google.analytics.tracking.android.EasyTracker;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,12 +11,19 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.v4.app.FragmentActivity;
 import android.text.format.Time;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class MissingCallActivtiy extends Activity{
 
@@ -114,11 +121,12 @@ public class MissingCallActivtiy extends Activity{
 	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter)
 	{
 		long mCallTimer = mMissingCallAdapter.getTime();
-		String incomingNumber = mMissingCallAdapter.getIncomingNumber();
-		TextView mcdText_1 = (TextView)findViewById(R.id.mcd_name_1);	
-		TextView mcdText_2 = (TextView)findViewById(R.id.mcd_name_2);	
-		TextView timeText = (TextView)findViewById(R.id.mcd_time);
-		
+		final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
+		TextView mcdText_1			= (TextView)findViewById(R.id.mcd_name_1);	
+		TextView mcdText_2			= (TextView)findViewById(R.id.mcd_name_2);	
+		TextView timeText			= (TextView)findViewById(R.id.mcd_time);
+//		ImageButton reCallButton	= (ImageButton)findViewById(R.id.btn_recall);
+		ImageView reCallBreath		= (ImageView)findViewById(R.id.recall_breath);
 		Time mTime = new Time();
 		mTime.set(mCallTimer);
 		
@@ -134,6 +142,26 @@ public class MissingCallActivtiy extends Activity{
 			mcdText_2.setText(incomingNumber);
 			mcdText_2.setVisibility(View.VISIBLE);
 		}
+		Animation alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+		alpha.setDuration(getBreathTime(mTime.second));
+//		reCallBreath.setImageResource(getBreathImage(mTime.second));
+		reCallBreath.setAnimation(alpha);
+//		Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+//		reCallButton.setAnimation(shake);
+		reCallBreath.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+                String phone = incomingNumber;  
+//				if (isValid(phone)) {
+					Intent callIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:"+phone));
+					startActivity(callIntent);
+//				} else {
+//					Toast.makeText(v.getContext(), "非法电话号码", Toast.LENGTH_SHORT).show();
+//				}
+			}
+		});
 //		phoneNumberText.setText(ContactsName);
 		timeText.setText(getString(R.string.ringing_Time)+mTime.second +getString(R.string.second));
 		timeText.setTextColor(getTimeColor(mTime.second));
@@ -155,6 +183,23 @@ public class MissingCallActivtiy extends Activity{
 		phoneCursor.close();
 		return personName;
 	}
+	public int getBreathImage(int time)
+	{
+		int ret = 0;
+		if(time<=5)
+		{
+			ret = R.drawable.recall_breath_red;
+		}
+		else if(time<=10&&time>5)
+		{
+			ret = R.drawable.recall_breath_white;
+		}
+		else if(time>10)
+		{
+			ret = R.drawable.recall_breath_green;
+		}
+		return ret;
+	}
 	public int getTimeColor(int time)
 	{
 		int ret = 0;
@@ -172,6 +217,40 @@ public class MissingCallActivtiy extends Activity{
 		}
 		return ret;
 	}
+	public long getBreathTime(int time)
+	{
+		long ret = 0;
+		if(time<=5)
+		{
+			ret = 900;
+		}
+		else if(time<=10&&time>5)
+		{
+			ret = 1000;
+		}
+		else if(time>10)
+		{
+			ret = 1100;
+		}
+		return ret;
+	}
+//    private boolean isValid(String input){  
+//        boolean flag = true;  
+//        String expression = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{5})$";  
+//        String expression2 = "^\\(?(\\d{3})\\)?[- ]?(\\d{4})[- ]?(\\d{4})$";          
+//        // 创建Pattern  
+//        Pattern pattern = Pattern.compile(expression);  
+//        // 将Pattern以参数传入Matcher作Regular expression  
+//        Matcher matcher = pattern.matcher(input);  
+//        Pattern pattern2 = Pattern.compile(expression2);  
+//        Matcher matcher2 = pattern2.matcher(input);  
+//        if(matcher.matches() || matcher2.matches()){  
+//            flag = true;  
+//        }else{  
+//            flag = false;  
+//        }  
+//        return flag;  
+//    } 
 
 	@Override
 	protected void onStart() {

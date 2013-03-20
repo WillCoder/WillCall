@@ -106,11 +106,11 @@ public class CallService extends Service{
     private void callStateRINGING(int lastState,String incomingNumber)
     {
 //    	Toast.makeText(this,"CALL_STATE_RINGING:"+incomingNumber,Toast.LENGTH_SHORT).show();
-    	if(lastState == TelephonyManager.CALL_STATE_IDLE)
-    	{
+//    	if(lastState == TelephonyManager.CALL_STATE_IDLE)
+//    	{
     		mCallTimer.clear();
     		mCallTimer.start();
-    	}
+//    	}
     }
     private void callStateOFFHOOK(int lastState,String incomingNumber)
     {
