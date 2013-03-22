@@ -28,7 +28,6 @@ public class CallService extends Service{
 		// TODO Auto-generated method stub
 //		State = flags;
 		super.onStartCommand(intent, flags, startId);
-		mCallTimer = new CallTimer();
         teleMgr = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         teleMgr.listen(new mPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
 		if(intent!=null)
@@ -93,9 +92,7 @@ public class CallService extends Service{
 //    	Toast.makeText(this,"CALL_STATE_IDLE:"+incomingNumber,Toast.LENGTH_SHORT).show();
     	if(lastState == TelephonyManager.CALL_STATE_RINGING)
     	{
-//    		long time = mCallTimer.end();
-//    		Time mTime = new Time();
-//    		mTime.set(mCallTimer.end());
+    		final long time = mCallTimer.end();
     		new Thread(new Runnable() {
 				
 				@Override
@@ -104,7 +101,7 @@ public class CallService extends Service{
 					for(int i = 0;i<1000000;i++);
 		    	   	Intent intent = new Intent(getBaseContext(),MissingCallActivtiy.class);
 		    	   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		    	   	intent.putExtra("time",mCallTimer.end());
+		    	   	intent.putExtra("time",time);
 		    	   	intent.putExtra("incomingNumber",incomingNumber);
 		    	   	startActivity(intent);
 				}
@@ -123,7 +120,7 @@ public class CallService extends Service{
 //    	Toast.makeText(this,"CALL_STATE_RINGING:"+incomingNumber,Toast.LENGTH_SHORT).show();
 //    	if(lastState == TelephonyManager.CALL_STATE_IDLE)
 //    	{
-    		mCallTimer.clear();
+    		mCallTimer = new CallTimer();
     		mCallTimer.start();
 //    	}
     }
