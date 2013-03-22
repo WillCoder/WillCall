@@ -1,5 +1,7 @@
 package com.will.willcall;
 
+import java.util.concurrent.Delayed;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -86,7 +88,7 @@ public class CallService extends Service{
 		}
 		return newState;
     }
-    private void callStateIDLE(int lastState,String incomingNumber)
+    private void callStateIDLE(int lastState,final String incomingNumber)
     {
 //    	Toast.makeText(this,"CALL_STATE_IDLE:"+incomingNumber,Toast.LENGTH_SHORT).show();
     	if(lastState == TelephonyManager.CALL_STATE_RINGING)
@@ -94,12 +96,25 @@ public class CallService extends Service{
 //    		long time = mCallTimer.end();
 //    		Time mTime = new Time();
 //    		mTime.set(mCallTimer.end());
+    		new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					for(int i = 0;i<1000000;i++);
+		    	   	Intent intent = new Intent(getBaseContext(),MissingCallActivtiy.class);
+		    	   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		    	   	intent.putExtra("time",mCallTimer.end());
+		    	   	intent.putExtra("incomingNumber",incomingNumber);
+		    	   	startActivity(intent);
+				}
+			}).start();
     		
-    	   	Intent intent = new Intent(this,MissingCallActivtiy.class);
-    	   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    	   	intent.putExtra("time",mCallTimer.end());
-    	   	intent.putExtra("incomingNumber",incomingNumber);
-    	   	this.startActivity(intent);
+//    	   	Intent intent = new Intent(this,MissingCallActivtiy.class);
+//    	   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//    	   	intent.putExtra("time",mCallTimer.end());
+//    	   	intent.putExtra("incomingNumber",incomingNumber);
+//    	   	this.startActivity(intent);
 //    		Toast.makeText(this,"Time:"+mTime.second,Toast.LENGTH_SHORT).show();
     	}
     }

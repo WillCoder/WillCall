@@ -155,7 +155,7 @@ public class MissingCallActivtiy extends Activity{
 				// TODO Auto-generated method stub
                 String phone = incomingNumber;  
 //				if (isValid(phone)) {
-					Intent callIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:"+phone));
+					Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
 					startActivity(callIntent);
 //				} else {
 //					Toast.makeText(v.getContext(), "非法电话号码", Toast.LENGTH_SHORT).show();

@@ -54,23 +54,23 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(v.getContext(),MissingCallActivtiy.class);
 			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			   	intent.putExtra("time",Long.valueOf(3000));
-			   	intent.putExtra("incomingNumber","1XXXXXXXXX");
+			   	intent.putExtra("incomingNumber","1999999999");
 			   	v.getContext().startActivity(intent);
 			   	
 //			   	Intent intent = new Intent(this,MissingCallFragmentActivtiy.class);
 			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			   	intent.putExtra("time",Long.valueOf(8000));
-			   	intent.putExtra("incomingNumber","2XXXXXXXXX");
+			   	intent.putExtra("incomingNumber","2999999999");
 			   	v.getContext().startActivity(intent);
 			   	
 			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			   	intent.putExtra("time",Long.valueOf(23000));
-			   	intent.putExtra("incomingNumber","3XXXXXXXXX");
+			   	intent.putExtra("incomingNumber","3999999999");
 			   	v.getContext().startActivity(intent);
 			   	
 			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			   	intent.putExtra("time",Long.valueOf(34000));
-			   	intent.putExtra("incomingNumber","4XXXXXXXXX");
+			   	intent.putExtra("incomingNumber","4999999999");
 			   	v.getContext().startActivity(intent);
 			}
 		});
