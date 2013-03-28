@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="transparent_background">#00000000</color>  
+	<color name="transparent_background">#00000000</color> 
+	<color name="block_1">#FF9933CC</color>
+	<color name="block_2">#FFFF8800</color>
+	<color name="block_3">#FF669900</color>
+	<color name="block_4">#FF33B5E5</color>
 </resources>

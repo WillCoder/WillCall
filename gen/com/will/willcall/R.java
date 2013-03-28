@@ -12,6 +12,10 @@ public final class R {
         public static final int alpha=0x7f040000;
         public static final int cycle_7=0x7f040001;
         public static final int shake=0x7f040002;
+        public static final int translate_1=0x7f040003;
+        public static final int translate_2=0x7f040004;
+        public static final int translate_3=0x7f040005;
+        public static final int translate_4=0x7f040006;
     }
     public static final class attr {
     }
@@ -24,6 +28,10 @@ public final class R {
         public static final int ga_reportUncaughtExceptions=0x7f060001;
     }
     public static final class color {
+        public static final int block_1=0x7f070001;
+        public static final int block_2=0x7f070002;
+        public static final int block_3=0x7f070003;
+        public static final int block_4=0x7f070004;
         public static final int transparent_background=0x7f070000;
     }
     public static final class dimen {
@@ -33,23 +41,39 @@ public final class R {
     }
     public static final class drawable {
         public static final int call_contact=0x7f020000;
-        public static final int divided=0x7f020001;
-        public static final int ic_action_search=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int page_left=0x7f020004;
-        public static final int page_right=0x7f020005;
-        public static final int recall_breath_green=0x7f020006;
-        public static final int recall_breath_red=0x7f020007;
-        public static final int recall_breath_white=0x7f020008;
-        public static final int whiterounded_half_bg=0x7f020009;
+        public static final int call_contact_win_theme=0x7f020001;
+        public static final int contact_icon_win_theme=0x7f020002;
+        public static final int dialog_full_holo_light=0x7f020003;
+        public static final int divided=0x7f020004;
+        public static final int ic_action_search=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int missed_icon_win_theme=0x7f020007;
+        public static final int page_left=0x7f020008;
+        public static final int page_left_win_theme=0x7f020009;
+        public static final int page_right=0x7f02000a;
+        public static final int page_right_win_theme=0x7f02000b;
+        public static final int recall_breath_green=0x7f02000c;
+        public static final int recall_breath_red=0x7f02000d;
+        public static final int recall_breath_white=0x7f02000e;
+        public static final int recall_good_win_theme=0x7f02000f;
+        public static final int recall_poor_win_theme=0x7f020010;
+        public static final int recall_warming_2_win_theme=0x7f020011;
+        public static final int recall_warming_win_theme=0x7f020012;
+        public static final int whiterounded_half_bg=0x7f020013;
     }
     public static final class id {
         public static final int about_version=0x7f0a0004;
         public static final int adView=0x7f0a0000;
+        public static final int block_view_1=0x7f0a000c;
+        public static final int block_view_2=0x7f0a000e;
+        public static final int block_view_3=0x7f0a000f;
+        public static final int block_view_4=0x7f0a0011;
         public static final int btn_recall=0x7f0a0007;
+        public static final int btn_recall_icon=0x7f0a0010;
         public static final int btn_to_left=0x7f0a000a;
         public static final int btn_to_right=0x7f0a000b;
         public static final int button=0x7f0a0002;
+        public static final int default_contact_icon=0x7f0a000d;
         public static final int mcd_name_1=0x7f0a0005;
         public static final int mcd_name_2=0x7f0a0006;
         public static final int mcd_time=0x7f0a0009;
@@ -60,6 +84,7 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int missing_call_dialog=0x7f030001;
+        public static final int missing_call_dialog_win_theme=0x7f030002;
     }
     public static final class string {
         public static final int about_copyright=0x7f050009;
