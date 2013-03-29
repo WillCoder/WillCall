@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.will.willcall"
     android:versionCode="2"
-    android:versionName="1.0.2" >
+    android:versionName="1.1.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -15,6 +15,7 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
+        
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme"
@@ -24,6 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity 
+            android:name=".ThemeActivity"
+            android:theme="@style/AppTheme"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize">
+        </activity>
+        
         <activity 
             android:name=".MissingCallActivtiy"
             android:theme="@style/dialog"
@@ -31,18 +39,22 @@
             android:launchMode="singleTask"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize">
         </activity>
+
         <activity android:name="com.google.ads.AdActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize">
-        </activity>     
+        </activity>  
+           
         <service
             android:name=".CallService">     
         </service>
+        
         <receiver android:name=".CallReceiver">
             <intent-filter android:priority="999">
                 <action android:name="android.intent.action.PHONE_STATE"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        
     </application>
 
 </manifest>

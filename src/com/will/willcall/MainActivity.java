@@ -11,7 +11,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
@@ -19,17 +22,20 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 public class MainActivity extends Activity {
 
-	public int Switch = -1;
+	private int Switch = -1;
 	public static final int STATE_OPEN = 1;
 	public static final int STATE_CLOSE = 0;
+	private static final class RequestCode{
+		public static final int ThemeRequest = 0;
+	}
 	
-	TextView mTextView = null;
+
 	
     @SuppressWarnings("deprecation")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); 
+        setContentView(R.layout.setting_main_layout); 
     /************************ AdMod add *********************************/
         AdView adView = (AdView)this.findViewById(R.id.adView);
         AdRequest mAdRequest = new AdRequest();
@@ -37,75 +43,114 @@ public class MainActivity extends Activity {
         adView.loadAd(mAdRequest);
     /************************ AdMod add *********************************/
         Switch = getSharedPreferences(getPackageName(),MODE_PRIVATE).getInt("state",STATE_CLOSE);
-        
 	   	Intent service = new Intent(Intent.ACTION_RUN);
 	   	service.setClass(this, CallService.class); 
 	   	startService(service);
-	   	mTextView = (TextView)findViewById(R.id.state_textView);
-		TextView versionText = (TextView)findViewById(R.id.about_version);
+	   	
+	   	TextView versionText	= (TextView)findViewById(R.id.about_version);
+	   	ToggleButton mButton	= (ToggleButton)findViewById(R.id.button);
+	   	View mTestButton		= (View)findViewById(R.id.test_button);
+	   	
 		versionText.setText(getAppVersionName(this));
-	   	Button mButton = (Button)findViewById(R.id.button);
-	   	Button mTestButton = (Button)findViewById(R.id.test_button);
 	   	mTestButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(v.getContext(),MissingCallActivtiy.class);
-			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			   	intent.putExtra("time",Long.valueOf(3000));
-			   	intent.putExtra("incomingNumber","13669290819");
-			   	v.getContext().startActivity(intent);
+//				Intent intent = new Intent(v.getContext(),MissingCallActivtiy.class);
+//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//			   	intent.putExtra("time",Long.valueOf(3000));
+//			   	intent.putExtra("incomingNumber","13669290819");
+//			   	v.getContext().startActivity(intent);
+//			   	
+////			   	Intent intent = new Intent(this,MissingCallFragmentActivtiy.class);
+//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//			   	intent.putExtra("time",Long.valueOf(8000));
+//			   	intent.putExtra("incomingNumber","2999999999");
+//			   	v.getContext().startActivity(intent);
+//			   	
+//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//			   	intent.putExtra("time",Long.valueOf(23000));
+//			   	intent.putExtra("incomingNumber","3999999999");
+//			   	v.getContext().startActivity(intent);
+//			   	
+//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//			   	intent.putExtra("time",Long.valueOf(34000));
+//			   	intent.putExtra("incomingNumber","4999999999");
+//			   	v.getContext().startActivity(intent);
 			   	
-//			   	Intent intent = new Intent(this,MissingCallFragmentActivtiy.class);
-			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			   	intent.putExtra("time",Long.valueOf(8000));
-			   	intent.putExtra("incomingNumber","2999999999");
-			   	v.getContext().startActivity(intent);
-			   	
-			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			   	intent.putExtra("time",Long.valueOf(23000));
-			   	intent.putExtra("incomingNumber","3999999999");
-			   	v.getContext().startActivity(intent);
-			   	
-			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			   	intent.putExtra("time",Long.valueOf(34000));
-			   	intent.putExtra("incomingNumber","4999999999");
-			   	v.getContext().startActivity(intent);
+			   	Intent intent = new Intent(v.getContext(),ThemeActivity.class);
+			   	startActivityForResult(intent, RequestCode.ThemeRequest);
+			   	overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out); 
 			}
 		});
 //	   	switchTextView = (TextView)findViewById(R.id.textView1);
-	   	setSwitchText(mTextView,Switch);
-	   	mButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-//				Switch = setSwitchText(v,Switch);
-		    	if(Switch==STATE_CLOSE)
-		    	{
-		    		Switch = STATE_OPEN;
-		    		setSwitchText(mTextView,Switch);
-		    	}
-		    	else if(Switch==STATE_OPEN)
-		    	{
-		    		Switch = STATE_CLOSE;
-		    		setSwitchText(mTextView,Switch);
-		    	}
-			}
-		}); 
-    }
-    public void setSwitchText(View v,int Switch)
-    {
+//	   	setSwitchState(Switch);
     	if(Switch==STATE_CLOSE)
     	{
-    		((TextView) v).setText(v.getContext().getString(R.string.already_close));
-
+    		mButton.setChecked(false);
     	}
     	else if(Switch==STATE_OPEN)
     	{
-    		((TextView) v).setText(v.getContext().getString(R.string.already_open));
+    		mButton.setChecked(true);
+    	}
+	   	mButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				setSwitchState(isChecked);
+			}
+		});
+//	   	mButton.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+////				Switch = setSwitchText(v,Switch);
+//		    	if(Switch==STATE_CLOSE)
+//		    	{
+//		    		setSwitchState(STATE_OPEN);
+//		    	}
+//		    	else if(Switch==STATE_OPEN)
+//		    	{
+//		    		setSwitchState(STATE_CLOSE);
+//		    	}
+//			}
+//		}); 
+    }
+    
+    
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		switch(requestCode)
+		{
+			case RequestCode.ThemeRequest:
+			{
+				if(resultCode == RESULT_OK)
+				{
+					TextView ThemeTextView= (TextView)findViewById(R.id.setting_main_theme_text);
+					ThemeTextView.setText(data.getStringExtra("theme_name"));	
+				}
+			}
+				break;
+				default:
+					break;
+		}
+	}
 
+
+	public void setSwitchState(boolean isChecked)
+    {
+    	if(isChecked)
+    	{
+    		this.Switch = STATE_OPEN;
+    	}
+    	else
+    	{
+    		this.Switch = STATE_CLOSE;
     	}
 		SharedPreferences.Editor editor = getSharedPreferences(getPackageName(),MODE_PRIVATE).edit();
 		editor.putInt("state", Switch);

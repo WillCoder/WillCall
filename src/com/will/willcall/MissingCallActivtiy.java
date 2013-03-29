@@ -33,20 +33,22 @@ public class MissingCallActivtiy extends Activity{
 	private Button ButtonToLeft = null;
 	private Button ButtonToRight = null;
 	private int Theme = 0;
+	private static final int CLASSIC_THEME = 0;
+	private static final int WINDOWS_THEME = 1;
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
-		Theme = 1;
+		Theme = getSharedPreferences(getPackageName(),MODE_PRIVATE).getInt("theme",CLASSIC_THEME);;
 		switch(Theme)
 		{
-			case 0:
+			case CLASSIC_THEME:
 			{
 				setContentView(R.layout.missing_call_dialog);
 			}
 				break;
-			case 1:
+			case WINDOWS_THEME:
 			{
 				setContentView(R.layout.missing_call_dialog_win_theme);
 			}
@@ -108,11 +110,11 @@ public class MissingCallActivtiy extends Activity{
 				ButtonToLeft.setVisibility(View.VISIBLE);
 				if(PageCount==mMissingCallAdapter.size()-1)
 				{
-					if(Theme == 0)
+					if(Theme == CLASSIC_THEME)
 					{
 						v.setVisibility(View.GONE);
 					}
-					else if(Theme == 1)
+					else if(Theme == WINDOWS_THEME)
 					{
 						startAnimation();
 						v.setVisibility(View.INVISIBLE);
@@ -139,11 +141,11 @@ public class MissingCallActivtiy extends Activity{
 				ButtonToRight.setVisibility(View.VISIBLE);
 				if(PageCount==0)
 				{
-					if(Theme == 0)
+					if(Theme == CLASSIC_THEME)
 					{
 						v.setVisibility(View.GONE);
 					}
-					else if(Theme == 1)
+					else if(Theme == WINDOWS_THEME)
 					{
 						startAnimation();
 						v.setVisibility(View.INVISIBLE);
@@ -163,7 +165,7 @@ public class MissingCallActivtiy extends Activity{
 	}
 	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter)
 	{
-		if(Theme == 0)
+		if(Theme == CLASSIC_THEME)
 		{
 			long mCallTimer = mMissingCallAdapter.getTime();
 			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
@@ -212,7 +214,7 @@ public class MissingCallActivtiy extends Activity{
 			});
 //			phoneNumberText.setText(ContactsName);
 		}
-		else if(Theme == 1)
+		else if(Theme == WINDOWS_THEME)
 		{
 			startAnimation();
 			long mCallTimer = mMissingCallAdapter.getTime();
@@ -270,7 +272,7 @@ public class MissingCallActivtiy extends Activity{
 	}
 	private void startAnimation()
 	{
-		if(Theme != 1)
+		if(Theme != WINDOWS_THEME)
 		{
 			return;
 		}
@@ -326,23 +328,23 @@ public class MissingCallActivtiy extends Activity{
 		phoneCursor.close();
 		return personName;
 	}
-	public int getBreathImage(int time)
-	{
-		int ret = 0;
-		if(time<=5)
-		{
-			ret = R.drawable.recall_breath_red;
-		}
-		else if(time<=10&&time>5)
-		{
-			ret = R.drawable.recall_breath_white;
-		}
-		else if(time>10)
-		{
-			ret = R.drawable.recall_breath_green;
-		}
-		return ret;
-	}
+//	public int getBreathImage(int time)
+//	{
+//		int ret = 0;
+//		if(time<=5)
+//		{
+//			ret = R.drawable.recall_breath_red;
+//		}
+//		else if(time<=10&&time>5)
+//		{
+//			ret = R.drawable.recall_breath_white;
+//		}
+//		else if(time>10)
+//		{
+//			ret = R.drawable.recall_breath_green;
+//		}
+//		return ret;
+//	}
 	public int getTimeColor(int time)
 	{
 		int ret = 0;
