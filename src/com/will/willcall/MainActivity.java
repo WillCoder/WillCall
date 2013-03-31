@@ -25,162 +25,185 @@ public class MainActivity extends Activity {
 	private int Switch = -1;
 	public static final int STATE_OPEN = 1;
 	public static final int STATE_CLOSE = 0;
-	private static final class RequestCode{
+	private int[] mThemeStringIds = { R.string.theme_classic,
+			R.string.theme_windows };
+	private int FocusGalleryPosition = 0;
+
+	private static final class RequestCode {
 		public static final int ThemeRequest = 0;
 	}
-	
 
-	
-    @SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting_main_layout); 
-    /************************ AdMod add *********************************/
-        AdView adView = (AdView)this.findViewById(R.id.adView);
-        AdRequest mAdRequest = new AdRequest();
-        mAdRequest.setTesting(false);
-        adView.loadAd(mAdRequest);
-    /************************ AdMod add *********************************/
-        Switch = getSharedPreferences(getPackageName(),MODE_PRIVATE).getInt("state",STATE_CLOSE);
-	   	Intent service = new Intent(Intent.ACTION_RUN);
-	   	service.setClass(this, CallService.class); 
-	   	startService(service);
-	   	
-	   	TextView versionText	= (TextView)findViewById(R.id.about_version);
-	   	ToggleButton mButton	= (ToggleButton)findViewById(R.id.button);
-	   	View mTestButton		= (View)findViewById(R.id.test_button);
-	   	
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.setting_main_layout);
+		/**************************** Get screen shoot **********************/
+//		Intent intent = new Intent(this, MissingCallActivtiy.class);
+//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		intent.putExtra("time", Long.valueOf(3000));
+//		intent.putExtra("incomingNumber", "1999999999");
+//		startActivity(intent);
+//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		intent.putExtra("time", Long.valueOf(8000));
+//		intent.putExtra("incomingNumber", "2999999999");
+//		startActivity(intent);
+//		finish();
+
+		/********************************************************************/
+		/************************ AdMod add *********************************/
+		AdView adView = (AdView) this.findViewById(R.id.adView);
+		AdRequest mAdRequest = new AdRequest();
+		mAdRequest.setTesting(false);
+		adView.loadAd(mAdRequest);
+		/************************ AdMod add *********************************/
+		FocusGalleryPosition = getSharedPreferences(getPackageName(),
+				MODE_PRIVATE).getInt("theme", FocusGalleryPosition);
+		Switch = getSharedPreferences(getPackageName(), MODE_PRIVATE).getInt(
+				"state", STATE_CLOSE);
+		Intent service = new Intent(Intent.ACTION_RUN);
+		service.setClass(this, CallService.class);
+		startService(service);
+
+		TextView versionText = (TextView) findViewById(R.id.about_version);
+		ToggleButton mButton = (ToggleButton) findViewById(R.id.button);
+		View mThemeButton = (View) findViewById(R.id.theme_button);
+		View mTestButton = (View) findViewById(R.id.test_button);
+		TextView ThemeTextView = (TextView) findViewById(R.id.setting_main_theme_text);
+
+		ThemeTextView.setText(mThemeStringIds[FocusGalleryPosition]);
 		versionText.setText(getAppVersionName(this));
-	   	mTestButton.setOnClickListener(new OnClickListener() {
-			
+		mThemeButton.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-//				Intent intent = new Intent(v.getContext(),MissingCallActivtiy.class);
-//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			   	intent.putExtra("time",Long.valueOf(3000));
-//			   	intent.putExtra("incomingNumber","13669290819");
-//			   	v.getContext().startActivity(intent);
-//			   	
-////			   	Intent intent = new Intent(this,MissingCallFragmentActivtiy.class);
-//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			   	intent.putExtra("time",Long.valueOf(8000));
-//			   	intent.putExtra("incomingNumber","2999999999");
-//			   	v.getContext().startActivity(intent);
-//			   	
-//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			   	intent.putExtra("time",Long.valueOf(23000));
-//			   	intent.putExtra("incomingNumber","3999999999");
-//			   	v.getContext().startActivity(intent);
-//			   	
-//			   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			   	intent.putExtra("time",Long.valueOf(34000));
-//			   	intent.putExtra("incomingNumber","4999999999");
-//			   	v.getContext().startActivity(intent);
-			   	
-			   	Intent intent = new Intent(v.getContext(),ThemeActivity.class);
-			   	startActivityForResult(intent, RequestCode.ThemeRequest);
-			   	overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out); 
+				Intent intent = new Intent(v.getContext(), ThemeActivity.class);
+				startActivityForResult(intent, RequestCode.ThemeRequest);
+				overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 			}
 		});
-//	   	switchTextView = (TextView)findViewById(R.id.textView1);
-//	   	setSwitchState(Switch);
-    	if(Switch==STATE_CLOSE)
-    	{
-    		mButton.setChecked(false);
-    	}
-    	else if(Switch==STATE_OPEN)
-    	{
-    		mButton.setChecked(true);
-    	}
-	   	mButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
+		mTestButton.setOnClickListener(new OnClickListener() {
+
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(v.getContext(),
+						MissingCallActivtiy.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("time", Long.valueOf(3000));
+				intent.putExtra("incomingNumber", "1999999999");
+				v.getContext().startActivity(intent);
+
+				// Intent intent = new
+				// Intent(this,MissingCallFragmentActivtiy.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("time", Long.valueOf(8000));
+				intent.putExtra("incomingNumber", "2999999999");
+				v.getContext().startActivity(intent);
+
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("time", Long.valueOf(23000));
+				intent.putExtra("incomingNumber", "3999999999");
+				v.getContext().startActivity(intent);
+
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.putExtra("time", Long.valueOf(34000));
+				intent.putExtra("incomingNumber", "4999999999");
+				v.getContext().startActivity(intent);
+			}
+		});
+		// switchTextView = (TextView)findViewById(R.id.textView1);
+		// setSwitchState(Switch);
+		if (Switch == STATE_CLOSE) {
+			mButton.setChecked(false);
+		} else if (Switch == STATE_OPEN) {
+			mButton.setChecked(true);
+		}
+		mButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
 				// TODO Auto-generated method stub
 				setSwitchState(isChecked);
 			}
 		});
-//	   	mButton.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-////				Switch = setSwitchText(v,Switch);
-//		    	if(Switch==STATE_CLOSE)
-//		    	{
-//		    		setSwitchState(STATE_OPEN);
-//		    	}
-//		    	else if(Switch==STATE_OPEN)
-//		    	{
-//		    		setSwitchState(STATE_CLOSE);
-//		    	}
-//			}
-//		}); 
-    }
-    
-    
-    @Override
+		// mButton.setOnClickListener(new OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// // Switch = setSwitchText(v,Switch);
+		// if(Switch==STATE_CLOSE)
+		// {
+		// setSwitchState(STATE_OPEN);
+		// }
+		// else if(Switch==STATE_OPEN)
+		// {
+		// setSwitchState(STATE_CLOSE);
+		// }
+		// }
+		// });
+	}
+
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		switch(requestCode)
-		{
-			case RequestCode.ThemeRequest:
-			{
-				if(resultCode == RESULT_OK)
-				{
-					TextView ThemeTextView= (TextView)findViewById(R.id.setting_main_theme_text);
-					ThemeTextView.setText(data.getStringExtra("theme_name"));	
-				}
+		switch (requestCode) {
+		case RequestCode.ThemeRequest: {
+			if (resultCode == RESULT_OK) {
+				TextView ThemeTextView = (TextView) findViewById(R.id.setting_main_theme_text);
+				ThemeTextView.setText(data.getStringExtra("theme_name"));
 			}
-				break;
-				default:
-					break;
+		}
+			break;
+		default:
+			break;
 		}
 	}
 
-
-	public void setSwitchState(boolean isChecked)
-    {
-    	if(isChecked)
-    	{
-    		this.Switch = STATE_OPEN;
-    	}
-    	else
-    	{
-    		this.Switch = STATE_CLOSE;
-    	}
-		SharedPreferences.Editor editor = getSharedPreferences(getPackageName(),MODE_PRIVATE).edit();
+	public void setSwitchState(boolean isChecked) {
+		if (isChecked) {
+			this.Switch = STATE_OPEN;
+		} else {
+			this.Switch = STATE_CLOSE;
+		}
+		SharedPreferences.Editor editor = getSharedPreferences(
+				getPackageName(), MODE_PRIVATE).edit();
 		editor.putInt("state", Switch);
 		editor.commit();
-    }
+	}
+
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
 		EasyTracker.getInstance().activityStart(this);
 	}
+
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
 		EasyTracker.getInstance().activityStop(this);
 	}
-	public static String getAppVersionName(Context context) {  
-	    String versionName = "";  
-	    try {  
-	        // Get the package info  
-	        PackageManager pm = context.getPackageManager();  
-	        PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);  
-	        versionName = pi.versionName;  
-	        if (TextUtils.isEmpty(versionName)) {  
-	            return "";  
-	        }  
-	    } catch (Exception e) {  
-//	        Log.e(THIS_FILE, "Exception", e);  
-	    }  
-	    return versionName;  
+
+	public static String getAppVersionName(Context context) {
+		String versionName = "";
+		try {
+			// Get the package info
+			PackageManager pm = context.getPackageManager();
+			PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+			versionName = pi.versionName;
+			if (TextUtils.isEmpty(versionName)) {
+				return "";
+			}
+		} catch (Exception e) {
+			// Log.e(THIS_FILE, "Exception", e);
+		}
+		return versionName;
 	}
 }

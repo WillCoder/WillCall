@@ -7,8 +7,9 @@
     <string name="teststr">Press the button to see the effect</string>
     <string name="btn_test">Test</string>
     <string name="ringing_Time">Ring length: </string>
-    <string name="second">sec</string>
+    <string name="second">\"</string>
     
+    <string name="Test">Test</string>
     <string name="accept">Accept</string>
     <string name="setting_theme">Theme</string>
     <string name="theme_classic">Classic</string>

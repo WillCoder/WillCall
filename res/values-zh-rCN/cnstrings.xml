@@ -7,8 +7,8 @@
     <string name="teststr">点击按钮查看效果</string>
     <string name="btn_test">测试</string>
     <string name="ringing_Time">响铃时长:</string>
-    <string name="second">秒</string>
     
+    <string name="Test">测试</string>
     <string name="accept">使用</string>
     <string name="setting_theme">主题</string>
     <string name="theme_classic">经典</string>

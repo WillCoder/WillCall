@@ -30,8 +30,8 @@ public class MissingCallActivtiy extends Activity{
 
 	private int PageCount = 0;
 	private ArrayList<MissingCallAdapter> mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
-	private Button ButtonToLeft = null;
-	private Button ButtonToRight = null;
+	private View ButtonToLeft = null;
+	private View ButtonToRight = null;
 	private int Theme = 0;
 	private static final int CLASSIC_THEME = 0;
 	private static final int WINDOWS_THEME = 1;
@@ -98,8 +98,8 @@ public class MissingCallActivtiy extends Activity{
 		String incomingNumber = intent.getStringExtra("incomingNumber");
 		
 		mMissingCallAdapter.add(new MissingCallAdapter(mCallTimer, incomingNumber));
-		ButtonToLeft = (Button)findViewById(R.id.btn_to_left);
-		ButtonToRight = (Button)findViewById(R.id.btn_to_right);
+		ButtonToLeft = (View)findViewById(R.id.btn_to_left);
+		ButtonToRight = (View)findViewById(R.id.btn_to_right);
 		ButtonToRight.setVisibility(View.VISIBLE);
 		ButtonToRight.setOnClickListener(new OnClickListener() {
 			
@@ -254,7 +254,7 @@ public class MissingCallActivtiy extends Activity{
 				contactDefaultIcon.setVisibility(View.VISIBLE);
 			}
 			reCallIcon.setImageResource(getReCallIcon(mTime.second));
-			timeText.setText(mTime.second + "”");
+			timeText.setText(mTime.second + getString(R.string.second));
 			setFakeBoldText(mcdText_1);
 			setFakeBoldText(mcdText_2);
 			setFakeBoldText(timeText);
@@ -276,18 +276,18 @@ public class MissingCallActivtiy extends Activity{
 		{
 			return;
 		}
-		View BlockView_1 			= (View)findViewById(R.id.block_view_1);
-		View BlockView_2 			= (View)findViewById(R.id.block_view_2);
-		View BlockView_3 			= (View)findViewById(R.id.block_view_3);
-		View BlockView_4 			= (View)findViewById(R.id.block_view_4);
+		View BaseBlockView_1 			= (View)findViewById(R.id.base_block_1);
+		View BaseBlockView_2 			= (View)findViewById(R.id.base_block_2);
+		View BaseBlockView_3 			= (View)findViewById(R.id.base_block_3);
+		View BaseBlockView_4 			= (View)findViewById(R.id.base_block_4);
 		Animation animation_1 = AnimationUtils.loadAnimation(this, R.anim.translate_1);
-		BlockView_1.startAnimation(animation_1);
+		BaseBlockView_1.startAnimation(animation_1);
 		Animation animation_2 = AnimationUtils.loadAnimation(this, R.anim.translate_2);
-		BlockView_2.startAnimation(animation_2);
+		BaseBlockView_2.startAnimation(animation_2);
 		Animation animation_3 = AnimationUtils.loadAnimation(this, R.anim.translate_3);
-		BlockView_3.startAnimation(animation_3);
+		BaseBlockView_3.startAnimation(animation_3);
 		Animation animation_4 = AnimationUtils.loadAnimation(this, R.anim.translate_4);
-		BlockView_4.startAnimation(animation_4);
+		BaseBlockView_4.startAnimation(animation_4);
 
 	}
 	public void setFakeBoldText(TextView text)
