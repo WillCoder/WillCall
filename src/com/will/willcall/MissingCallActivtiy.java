@@ -173,9 +173,11 @@ public class MissingCallActivtiy extends Activity{
 			TextView mcdText_2			= (TextView)findViewById(R.id.mcd_name_2);	
 			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
 			ImageView reCallBreath		= (ImageView)findViewById(R.id.recall_breath);
-			Time mTime = new Time();
-			mTime.set(mCallTimer);
 			
+			long Second = mCallTimer/1000;
+//			Time mTime = new Time();
+//			mTime.set(mCallTimer);
+//			mTime.
 			String ContactsName = getContactsInfo(incomingNumber);
 			
 	
@@ -188,12 +190,12 @@ public class MissingCallActivtiy extends Activity{
 				mcdText_2.setVisibility(View.VISIBLE);
 			}
 
-			timeText.setText(getString(R.string.ringing_Time) + mTime.second
+			timeText.setText(getString(R.string.ringing_Time) + Long.toString(Second)
 					+ getString(R.string.second));
-			timeText.setTextColor(getTimeColor(mTime.second));
+			timeText.setTextColor(getTimeColor(Second));
 
 			Animation alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
-			alpha.setDuration(getBreathTime(mTime.second));
+			alpha.setDuration(getBreathTime(Second));
 //			reCallBreath.setImageResource(getBreathImage(mTime.second));
 			reCallBreath.setAnimation(alpha);
 //			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
@@ -227,8 +229,9 @@ public class MissingCallActivtiy extends Activity{
 			View contactDefaultIcon		= (View)findViewById(R.id.default_contact_icon);
 			View BlockView_1 			= (View)findViewById(R.id.block_view_1);
 
-			Time mTime = new Time();
-			mTime.set(mCallTimer);
+			long Second = mCallTimer/1000;
+//			Time mTime = new Time();
+//			mTime.set(mCallTimer);
 			
 			String ContactsName = getContactsInfo(incomingNumber);
 			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
@@ -253,8 +256,8 @@ public class MissingCallActivtiy extends Activity{
 				BlockView_1.setBackgroundResource(R.color.block_1);
 				contactDefaultIcon.setVisibility(View.VISIBLE);
 			}
-			reCallIcon.setImageResource(getReCallIcon(mTime.second));
-			timeText.setText(mTime.second + getString(R.string.second));
+			reCallIcon.setImageResource(getReCallIcon(Second));
+			timeText.setText(Long.toString(Second) + getString(R.string.second));
 			setFakeBoldText(mcdText_1);
 			setFakeBoldText(mcdText_2);
 			setFakeBoldText(timeText);
@@ -345,7 +348,12 @@ public class MissingCallActivtiy extends Activity{
 //		}
 //		return ret;
 //	}
-	public int getTimeColor(int time)
+	/**
+	 * 
+	 * @param time second
+	 * @return
+	 */
+	public int getTimeColor(long time)
 	{
 		int ret = 0;
 		if(time<=5)
@@ -362,7 +370,12 @@ public class MissingCallActivtiy extends Activity{
 		}
 		return ret;
 	}
-	public int getReCallIcon(int time)
+	/**
+	 * 
+	 * @param time second
+	 * @return
+	 */
+	public int getReCallIcon(long time)
 	{
 		int ret = 0;
 		if(time<=5)
@@ -379,7 +392,12 @@ public class MissingCallActivtiy extends Activity{
 		}
 		return ret;
 	}
-	public long getBreathTime(int time)
+	/**
+	 * 
+	 * @param time second
+	 * @return
+	 */
+	public long getBreathTime(long time)
 	{
 		long ret = 0;
 		if(time<=5)

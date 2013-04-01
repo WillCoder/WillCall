@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
 				v.getContext().startActivity(intent);
 
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.putExtra("time", Long.valueOf(34000));
+				intent.putExtra("time", Long.valueOf(134000));
 				intent.putExtra("incomingNumber", "4999999999");
 				v.getContext().startActivity(intent);
 			}
