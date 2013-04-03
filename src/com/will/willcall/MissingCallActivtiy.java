@@ -25,7 +25,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.analytics.tracking.android.EasyTracker;
-
+/**
+ * 
+ * @author Will
+ *	create at 2013/3
+ */
 public class MissingCallActivtiy extends Activity{
 
 	private int PageCount = 0;
@@ -88,7 +92,10 @@ public class MissingCallActivtiy extends Activity{
 //		timeText.setText("响铃时长:"+mTime.second +"秒");
 //		timeText.setTextColor(getTimeColor(mTime.second));
 	}
-
+/*
+ * If this Activity is called twice, onNewIntent work(non-Javadoc)
+ * @see android.app.Activity#onNewIntent(android.content.Intent)
+ */
 	@Override
 	protected void onNewIntent(Intent intent) {
 		// TODO Auto-generated method stub
@@ -163,6 +170,10 @@ public class MissingCallActivtiy extends Activity{
 			}
 		});
 	}
+	/**
+	 * Set layout info
+	 * @param mMissingCallAdapter
+	 */
 	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter)
 	{
 		if(Theme == CLASSIC_THEME)
@@ -273,6 +284,9 @@ public class MissingCallActivtiy extends Activity{
 			});
 		}
 	}
+	/**
+	 * Layout animation
+	 */
 	private void startAnimation()
 	{
 		if(Theme != WINDOWS_THEME)
@@ -293,11 +307,20 @@ public class MissingCallActivtiy extends Activity{
 		BaseBlockView_4.startAnimation(animation_4);
 
 	}
+	/**
+	 * Set the textView font Bold,but can be instead by xml
+	 * @param text
+	 */
 	public void setFakeBoldText(TextView text)
 	{
 		TextPaint tp = text.getPaint(); 
 		tp.setFakeBoldText(true); 
 	}
+	/**
+	 * Contacts name
+	 * @param address
+	 * @return
+	 */
 	public String getContactsInfo(String address) {
 		String personName = null;
 		Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, address);
@@ -313,6 +336,11 @@ public class MissingCallActivtiy extends Activity{
 		phoneCursor.close();
 		return personName;
 	}
+	/**
+	 * Contacts Photo
+	 * @param address
+	 * @return
+	 */
 	public Bitmap getContactsPhoto(String address) {
 		Bitmap personName = null;
 		Uri personUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, address);
@@ -331,23 +359,6 @@ public class MissingCallActivtiy extends Activity{
 		phoneCursor.close();
 		return personName;
 	}
-//	public int getBreathImage(int time)
-//	{
-//		int ret = 0;
-//		if(time<=5)
-//		{
-//			ret = R.drawable.recall_breath_red;
-//		}
-//		else if(time<=10&&time>5)
-//		{
-//			ret = R.drawable.recall_breath_white;
-//		}
-//		else if(time>10)
-//		{
-//			ret = R.drawable.recall_breath_green;
-//		}
-//		return ret;
-//	}
 	/**
 	 * 
 	 * @param time second
@@ -414,23 +425,6 @@ public class MissingCallActivtiy extends Activity{
 		}
 		return ret;
 	}
-//    private boolean isValid(String input){  
-//        boolean flag = true;  
-//        String expression = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{5})$";  
-//        String expression2 = "^\\(?(\\d{3})\\)?[- ]?(\\d{4})[- ]?(\\d{4})$";          
-//        // 创建Pattern  
-//        Pattern pattern = Pattern.compile(expression);  
-//        // 将Pattern以参数传入Matcher作Regular expression  
-//        Matcher matcher = pattern.matcher(input);  
-//        Pattern pattern2 = Pattern.compile(expression2);  
-//        Matcher matcher2 = pattern2.matcher(input);  
-//        if(matcher.matches() || matcher2.matches()){  
-//            flag = true;  
-//        }else{  
-//            flag = false;  
-//        }  
-//        return flag;  
-//    } 
 
 	@Override
 	protected void onStart() {

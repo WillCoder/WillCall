@@ -1,5 +1,9 @@
 package com.will.willcall;
-
+/**
+ *  Missed Call imformation cache
+ * @author Will
+ *
+ */
 public class MissingCallAdapter {
 
 	private long mCallTimer = -1;

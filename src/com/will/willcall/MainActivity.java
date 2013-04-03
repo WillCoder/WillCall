@@ -19,7 +19,11 @@ import android.widget.ToggleButton;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.google.analytics.tracking.android.EasyTracker;
-
+/**
+ * 
+ * @author Will
+ *	create at 2013/3
+ */
 public class MainActivity extends Activity {
 
 	private int Switch = -1;
@@ -114,8 +118,7 @@ public class MainActivity extends Activity {
 				v.getContext().startActivity(intent);
 			}
 		});
-		// switchTextView = (TextView)findViewById(R.id.textView1);
-		// setSwitchState(Switch);
+
 		if (Switch == STATE_CLOSE) {
 			mButton.setChecked(false);
 		} else if (Switch == STATE_OPEN) {
@@ -130,22 +133,6 @@ public class MainActivity extends Activity {
 				setSwitchState(isChecked);
 			}
 		});
-		// mButton.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// // Switch = setSwitchText(v,Switch);
-		// if(Switch==STATE_CLOSE)
-		// {
-		// setSwitchState(STATE_OPEN);
-		// }
-		// else if(Switch==STATE_OPEN)
-		// {
-		// setSwitchState(STATE_CLOSE);
-		// }
-		// }
-		// });
 	}
 
 	@Override

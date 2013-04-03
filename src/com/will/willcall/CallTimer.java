@@ -1,7 +1,11 @@
 package com.will.willcall;
 
 import java.util.Calendar;
-
+/**
+ * The call state cache
+ * @author BXC2011010
+ *
+ */
 public class CallTimer {
 
 	public static final int STATE_TIMING = 0;

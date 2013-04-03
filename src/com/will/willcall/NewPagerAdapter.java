@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * ViewPager适配器
+ * 
+ * @author Will
+ *	create at 2013/3
  */
 public class NewPagerAdapter extends PagerAdapter {
 

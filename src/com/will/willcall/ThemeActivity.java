@@ -1,5 +1,7 @@
 package com.will.willcall;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +19,11 @@ import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+/**
+ * 
+ * @author Will
+ *	create at 2013/3
+ */
 public class ThemeActivity extends Activity implements OnItemSelectedListener {
 
 	private int[] mThemeImageIds = { R.drawable.theme_classic, R.drawable.theme_windows};
@@ -132,5 +138,19 @@ public class ThemeActivity extends Activity implements OnItemSelectedListener {
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		EasyTracker.getInstance().activityStart(this);
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		EasyTracker.getInstance().activityStop(this);
 	}
 }

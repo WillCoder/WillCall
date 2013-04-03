@@ -8,7 +8,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
-
+/**
+ * if device start and phone ring ,start the service
+ * @author Will
+ *
+ */
 public class CallReceiver extends BroadcastReceiver{
 	
 	@Override
