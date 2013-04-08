@@ -26,8 +26,13 @@ import android.widget.TextView;
  */
 public class ThemeActivity extends Activity implements OnItemSelectedListener {
 
-	private int[] mThemeImageIds = { R.drawable.theme_classic, R.drawable.theme_windows};
-	private int[] mThemeStringIds = { R.string.theme_classic, R.string.theme_windows};
+	public static int[] ThemeImageIds = { R.drawable.theme_classic, 
+									R.drawable.theme_windows,
+									R.drawable.theme_android};
+	
+	public static int[] ThemeStringIds = { R.string.theme_classic,
+									R.string.theme_windows,
+									R.string.theme_android};
 //	private int ThemeSelect = 0;
 	private int FocusGalleryPosition = 0;
 	private TextView ThemeStrView = null;
@@ -64,12 +69,12 @@ public class ThemeActivity extends Activity implements OnItemSelectedListener {
 				editor.putInt("theme", FocusGalleryPosition);
 				editor.commit();
 				Intent intent = new Intent();
-				intent.putExtra("theme_name", getResources().getString(mThemeStringIds[FocusGalleryPosition]));
+				intent.putExtra("theme_name", getResources().getString(ThemeStringIds[FocusGalleryPosition]));
 				setResult(RESULT_OK, intent);
 				finish();
 			}
 		});
-		ThemeStrView.setText(mThemeStringIds[FocusGalleryPosition]);
+		ThemeStrView.setText(ThemeStringIds[FocusGalleryPosition]);
 		
 		mGallery.setAdapter(new ImageAdapter(this)); // 和ListView一样，Gallery需要一个adapter进行资源配置
 		mGallery.setOnItemSelectedListener(this);
@@ -92,7 +97,7 @@ public class ThemeActivity extends Activity implements OnItemSelectedListener {
 
 		@Override
 		public int getCount() {
-			return mThemeImageIds.length;
+			return ThemeImageIds.length;
 		}
 
 		@Override
@@ -118,7 +123,7 @@ public class ThemeActivity extends Activity implements OnItemSelectedListener {
 				mImageView
 						.setBackgroundResource(R.drawable.setting_theme_image_bg); // 设置Gallery图片(ImageView)背景
 				mImageView.setAdjustViewBounds(true); // 使Gallery图片自适应屏幕分辨率，以免图片bound超出屏幕范围
-				mImageView.setImageResource(mThemeImageIds[position]); // 设置Gallery图片(ImageView)源资源
+				mImageView.setImageResource(ThemeImageIds[position]); // 设置Gallery图片(ImageView)源资源
 			} else {
 				mImageView = (ImageView) convertView;
 			}
@@ -131,7 +136,7 @@ public class ThemeActivity extends Activity implements OnItemSelectedListener {
 			long arg3) {
 		// TODO Auto-generated method stub
 		this.FocusGalleryPosition = arg2;
-		ThemeStrView.setText(mThemeStringIds[FocusGalleryPosition]);
+		ThemeStrView.setText(ThemeStringIds[FocusGalleryPosition]);
 	}
 
 	@Override

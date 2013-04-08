@@ -10,12 +10,12 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextPaint;
-import android.text.format.Time;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -36,32 +36,35 @@ public class MissingCallActivtiy extends Activity{
 	private ArrayList<MissingCallAdapter> mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
 	private View ButtonToLeft = null;
 	private View ButtonToRight = null;
-	private int Theme = 0;
-	private static final int CLASSIC_THEME = 0;
-	private static final int WINDOWS_THEME = 1;
+	private int Theme = ThemeType.CLASSIC_THEME;
+	
+	public class ThemeType{
+		public static final int CLASSIC_THEME = 0;
+		public static final int WINDOWS_THEME = 1;
+		public static final int ANDROID_THEME = 2;
+		public static final int IPHONE_THEME = 3;
+	}
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
-		Theme = getSharedPreferences(getPackageName(),MODE_PRIVATE).getInt("theme",CLASSIC_THEME);;
-		switch(Theme)
+		Theme = getSharedPreferences(getPackageName(),MODE_PRIVATE).getInt("theme",ThemeType.CLASSIC_THEME);;
+		if(Theme == ThemeType.CLASSIC_THEME)
 		{
-			case CLASSIC_THEME:
-			{
-				setContentView(R.layout.missing_call_dialog);
-			}
-				break;
-			case WINDOWS_THEME:
-			{
-				setContentView(R.layout.missing_call_dialog_win_theme);
-			}
-				break;
-				default:
-				{
-					setContentView(R.layout.missing_call_dialog);
-				}
-					break;
+			setContentView(R.layout.missing_call_dialog);
+		}
+		else if(Theme == ThemeType.WINDOWS_THEME)
+		{
+			setContentView(R.layout.missing_call_dialog_win_theme);	
+		}
+		else if(Theme == ThemeType.ANDROID_THEME)
+		{
+			setContentView(R.layout.missing_call_dialog_android_theme);
+		}
+		else if(Theme == ThemeType.IPHONE_THEME)
+		{
+			setContentView(R.layout.missing_call_dialog);
 		}
 
 		long mCallTimer = getIntent().getLongExtra("time", -1);
@@ -117,18 +120,22 @@ public class MissingCallActivtiy extends Activity{
 				ButtonToLeft.setVisibility(View.VISIBLE);
 				if(PageCount==mMissingCallAdapter.size()-1)
 				{
-					if(Theme == CLASSIC_THEME)
+					if(Theme == ThemeType.CLASSIC_THEME)
 					{
 						v.setVisibility(View.GONE);
 					}
-					else if(Theme == WINDOWS_THEME)
+					else if(Theme == ThemeType.WINDOWS_THEME)
 					{
 						startAnimation();
 						v.setVisibility(View.INVISIBLE);
 					}
-					else
+					else if(Theme == ThemeType.ANDROID_THEME)
 					{
-						v.setVisibility(View.INVISIBLE);
+						v.setVisibility(View.GONE);
+					}
+					else if(Theme == ThemeType.IPHONE_THEME)
+					{
+						v.setVisibility(View.GONE);
 					}
 				}
 				else
@@ -148,18 +155,22 @@ public class MissingCallActivtiy extends Activity{
 				ButtonToRight.setVisibility(View.VISIBLE);
 				if(PageCount==0)
 				{
-					if(Theme == CLASSIC_THEME)
+					if(Theme == ThemeType.CLASSIC_THEME)
 					{
 						v.setVisibility(View.GONE);
 					}
-					else if(Theme == WINDOWS_THEME)
+					else if(Theme == ThemeType.WINDOWS_THEME)
 					{
 						startAnimation();
 						v.setVisibility(View.INVISIBLE);
 					}
-					else
+					else if(Theme == ThemeType.ANDROID_THEME)
 					{
-						v.setVisibility(View.INVISIBLE);
+						v.setVisibility(View.GONE);
+					}
+					else if(Theme == ThemeType.IPHONE_THEME)
+					{
+						v.setVisibility(View.GONE);
 					}
 				}
 				else
@@ -176,7 +187,7 @@ public class MissingCallActivtiy extends Activity{
 	 */
 	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter)
 	{
-		if(Theme == CLASSIC_THEME)
+		if(Theme == ThemeType.CLASSIC_THEME)
 		{
 			long mCallTimer = mMissingCallAdapter.getTime();
 			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
@@ -227,7 +238,7 @@ public class MissingCallActivtiy extends Activity{
 			});
 //			phoneNumberText.setText(ContactsName);
 		}
-		else if(Theme == WINDOWS_THEME)
+		else if(Theme == ThemeType.WINDOWS_THEME)
 		{
 			startAnimation();
 			long mCallTimer = mMissingCallAdapter.getTime();
@@ -283,13 +294,69 @@ public class MissingCallActivtiy extends Activity{
 				}
 			});
 		}
+		else if(Theme == ThemeType.ANDROID_THEME)
+		{
+			long mCallTimer = mMissingCallAdapter.getTime();
+			long Second = mCallTimer/1000;
+			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
+			TextView mcdText_1			= (TextView)findViewById(R.id.mcd_name_1);	
+			TextView mcdText_2			= (TextView)findViewById(R.id.mcd_name_2);	
+			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
+			TextView titleText			= (TextView)findViewById(R.id.title_name);
+			
+			Button reCallButton			= (Button)findViewById(R.id.recall_btn);
+			ImageView ContactImageView	= (ImageView)findViewById(R.id.contact_image);
+			ImageView reCallIcon		= (ImageView)findViewById(R.id.btn_recall_icon);
+			
+			String ContactsName = getContactsInfo(incomingNumber);
+			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
+			
+			Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");  
+//			mcdText_1.setTypeface(tf);
+			mcdText_2.setTypeface(tf);
+			timeText.setTypeface(tf);
+			titleText.setTypeface(tf);
+			if (ContactsName == null) {
+				mcdText_1.setText(R.string.unknow_contact_name);
+				mcdText_2.setText(incomingNumber);
+			} else {
+				mcdText_1.setText(ContactsName);
+				mcdText_2.setText(incomingNumber);
+			}
+			if (ContactsPhoto != null)
+			{
+				ContactImageView.setImageBitmap(ContactsPhoto);
+			}
+			else
+			{
+				ContactImageView.setImageResource(R.drawable.contact_icon_win_theme);
+			}
+			reCallIcon.setImageResource(getReCallIcon(Second));
+			timeText.setText(Long.toString(Second)	+ getString(R.string.second));
+			timeText.setTextColor(getTimeColor(Second));
+
+			reCallButton.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+	                String phone = incomingNumber;  
+					Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+					startActivity(callIntent);
+				}
+			});
+		}
+		else if(Theme == ThemeType.IPHONE_THEME)
+		{
+
+		}
 	}
 	/**
 	 * Layout animation
 	 */
 	private void startAnimation()
 	{
-		if(Theme != WINDOWS_THEME)
+		if(Theme != ThemeType.WINDOWS_THEME)
 		{
 			return;
 		}

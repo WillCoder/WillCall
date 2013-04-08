@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -29,8 +28,6 @@ public class MainActivity extends Activity {
 	private int Switch = -1;
 	public static final int STATE_OPEN = 1;
 	public static final int STATE_CLOSE = 0;
-	private int[] mThemeStringIds = { R.string.theme_classic,
-			R.string.theme_windows };
 	private int FocusGalleryPosition = 0;
 
 	private static final class RequestCode {
@@ -75,7 +72,7 @@ public class MainActivity extends Activity {
 		View mTestButton = (View) findViewById(R.id.test_button);
 		TextView ThemeTextView = (TextView) findViewById(R.id.setting_main_theme_text);
 
-		ThemeTextView.setText(mThemeStringIds[FocusGalleryPosition]);
+		ThemeTextView.setText(ThemeActivity.ThemeStringIds[FocusGalleryPosition]);
 		versionText.setText(getAppVersionName(this));
 		mThemeButton.setOnClickListener(new OnClickListener() {
 
@@ -97,7 +94,7 @@ public class MainActivity extends Activity {
 						MissingCallActivtiy.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.putExtra("time", Long.valueOf(3000));
-				intent.putExtra("incomingNumber", "1999999999");
+				intent.putExtra("incomingNumber", "13669290819");
 				v.getContext().startActivity(intent);
 
 				// Intent intent = new
