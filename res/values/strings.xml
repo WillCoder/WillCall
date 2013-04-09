@@ -17,7 +17,7 @@
     <string name="theme_android">Android</string>
     <string name="theme_iphone">Iphone</string>
     <string name="theme_colorful">Colorful</string>
-    <string name="unknow_contact_name">Unknow</string>
+    <string name="unknow_contact_name">unknown</string>
     
     <string name="second">\"</string>
     <string name="about_copyright">Copyright ® 2012 Will Team. All Rights Reserved</string>

@@ -2,7 +2,6 @@ package com.will.willcall;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
@@ -131,6 +130,7 @@ public class MissingCallActivtiy extends Activity{
 					}
 					else if(Theme == ThemeType.ANDROID_THEME)
 					{
+						findViewById(R.id.page_divider).setVisibility(View.GONE);
 						v.setVisibility(View.GONE);
 					}
 					else if(Theme == ThemeType.IPHONE_THEME)
@@ -140,7 +140,10 @@ public class MissingCallActivtiy extends Activity{
 				}
 				else
 				{
-
+					if(Theme == ThemeType.ANDROID_THEME)
+					{
+						findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
+					}
 				}
 				setMissingInfo(mMissingCallAdapter.get(PageCount));
 			}
@@ -166,6 +169,7 @@ public class MissingCallActivtiy extends Activity{
 					}
 					else if(Theme == ThemeType.ANDROID_THEME)
 					{
+						findViewById(R.id.page_divider).setVisibility(View.GONE);
 						v.setVisibility(View.GONE);
 					}
 					else if(Theme == ThemeType.IPHONE_THEME)
@@ -175,7 +179,10 @@ public class MissingCallActivtiy extends Activity{
 				}
 				else
 				{
-
+					if(Theme == ThemeType.ANDROID_THEME)
+					{
+						findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
+					}
 				}
 				setMissingInfo(mMissingCallAdapter.get(PageCount));
 			}
@@ -259,7 +266,7 @@ public class MissingCallActivtiy extends Activity{
 			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
 
 			if (ContactsName == null) {
-				mcdText_1.setText(getString(R.string.app_name));
+				mcdText_1.setText(getString(R.string.unknow_contact_name));
 				mcdText_2.setText(incomingNumber);
 				mcdText_2.setVisibility(View.VISIBLE);
 			} 
@@ -304,7 +311,7 @@ public class MissingCallActivtiy extends Activity{
 			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
 			TextView titleText			= (TextView)findViewById(R.id.title_name);
 			
-			Button reCallButton			= (Button)findViewById(R.id.recall_btn);
+			View reCallButton			= (View)findViewById(R.id.recall_btn);
 			ImageView ContactImageView	= (ImageView)findViewById(R.id.contact_image);
 			ImageView reCallIcon		= (ImageView)findViewById(R.id.btn_recall_icon);
 			

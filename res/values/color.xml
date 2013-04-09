@@ -8,4 +8,6 @@
 	<color name="block_4">#FF33B5E5</color>
 	<color name="setting_bg">#FF0099CC</color>
 	<color name="setting_bg_pressed">#FF33B5E5</color>
+	<color name="btn_trans_default">#00000000</color> 
+	<color name="btn_trans_pressed">#40FFFFFF</color> 
 </resources>

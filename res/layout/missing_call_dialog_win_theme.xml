@@ -87,7 +87,7 @@
                             android:paddingBottom="2dp"
                             android:paddingLeft="6dp"
                             android:paddingTop="2dp"
-                            android:text="@string/app_name"
+                            android:text="@string/unknow_contact_name"
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
                     </LinearLayout>

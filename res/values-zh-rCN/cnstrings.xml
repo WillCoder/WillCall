@@ -16,5 +16,5 @@
     <string name="theme_android">安卓</string>
     <string name="theme_iphone">苹果</string>
     <string name="theme_colorful">色彩</string>
-    <string name="unknow_contact_name">未知</string>
+    <string name="unknow_contact_name">未知来电</string>
 </resources>

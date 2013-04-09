@@ -94,11 +94,9 @@ public class MainActivity extends Activity {
 						MissingCallActivtiy.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.putExtra("time", Long.valueOf(3000));
-				intent.putExtra("incomingNumber", "13669290819");
+				intent.putExtra("incomingNumber", "1999999999");
 				v.getContext().startActivity(intent);
 
-				// Intent intent = new
-				// Intent(this,MissingCallFragmentActivtiy.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.putExtra("time", Long.valueOf(8000));
 				intent.putExtra("incomingNumber", "2999999999");
