@@ -36,6 +36,7 @@ public class MissingCallActivtiy extends Activity{
 	private View ButtonToLeft = null;
 	private View ButtonToRight = null;
 	private int Theme = ThemeType.CLASSIC_THEME;
+	private Typeface tf = null;
 	
 	public class ThemeType{
 		public static final int CLASSIC_THEME = 0;
@@ -59,6 +60,7 @@ public class MissingCallActivtiy extends Activity{
 		}
 		else if(Theme == ThemeType.ANDROID_THEME)
 		{
+			tf = Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");
 			setContentView(R.layout.missing_call_dialog_android_theme);
 		}
 		else if(Theme == ThemeType.IPHONE_THEME)
@@ -317,9 +319,7 @@ public class MissingCallActivtiy extends Activity{
 			
 			String ContactsName = getContactsInfo(incomingNumber);
 			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
-			
-			Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");  
-//			mcdText_1.setTypeface(tf);
+
 			mcdText_2.setTypeface(tf);
 			timeText.setTypeface(tf);
 			titleText.setTypeface(tf);

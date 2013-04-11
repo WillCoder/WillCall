@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,7 +30,8 @@ public class MainActivity extends Activity {
 	public static final int STATE_OPEN = 1;
 	public static final int STATE_CLOSE = 0;
 	private int FocusGalleryPosition = 0;
-
+	private Typeface tf = null;
+	
 	private static final class RequestCode {
 		public static final int ThemeRequest = 0;
 	}
@@ -66,11 +68,21 @@ public class MainActivity extends Activity {
 		service.setClass(this, CallService.class);
 		startService(service);
 
-		TextView versionText = (TextView) findViewById(R.id.about_version);
-		ToggleButton mButton = (ToggleButton) findViewById(R.id.button);
-		View mThemeButton = (View) findViewById(R.id.theme_button);
-		View mTestButton = (View) findViewById(R.id.test_button);
-		TextView ThemeTextView = (TextView) findViewById(R.id.setting_main_theme_text);
+		tf = Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");
+		
+		TextView versionText 	= (TextView) findViewById(R.id.about_version);
+		ToggleButton mButton 	= (ToggleButton) findViewById(R.id.button);
+		View mThemeButton 		= (View) findViewById(R.id.theme_button);
+		View mTestButton 		= (View) findViewById(R.id.test_button);
+		TextView ThemeTextView 	= (TextView) findViewById(R.id.setting_main_theme_text);
+
+		/**
+		 * Set fontfamily
+		 */
+		versionText.setTypeface(tf);
+		((TextView)findViewById(R.id.switch_textview)).setTypeface(tf);
+		((TextView)findViewById(R.id.theme_textview)).setTypeface(tf);
+		((TextView)findViewById(R.id.test_textview)).setTypeface(tf);
 
 		ThemeTextView.setText(ThemeActivity.ThemeStringIds[FocusGalleryPosition]);
 		versionText.setText(getAppVersionName(this));

@@ -24,7 +24,7 @@
             android:text="@string/setting_theme"
             android:textColor="@android:color/white"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/setting_theme_textview"
@@ -38,7 +38,7 @@
             android:text="@string/theme_classic"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"/>
     </LinearLayout>
 
     <Gallery
