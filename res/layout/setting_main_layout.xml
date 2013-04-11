@@ -46,8 +46,7 @@
             android:paddingLeft="16dp"
             android:text="@string/btn_switch"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="30sp"/>
 
         <ToggleButton
             android:id="@+id/button"
@@ -87,8 +86,7 @@
             android:paddingLeft="16dp"
             android:text="@string/setting_theme"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="30sp"/>
 
         <TextView
             android:id="@+id/setting_main_theme_text"
@@ -143,8 +141,7 @@
             android:paddingLeft="16dp"
             android:text="@string/Test"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="30sp"/>
     </LinearLayout>
 
     <LinearLayout

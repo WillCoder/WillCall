@@ -133,14 +133,15 @@ public final class R {
      <string name="already_close">Closed</string> 
      <string name="teststr">Press the button to see the effect</string> 
      <string name="about_info">Will工作室版权所有</string> 
-     <string name="already_open">已开启</string> 
-     <string name="already_close">已关闭</string> 
-     <string name="teststr">点击按钮查看效果</string> 
-     <string name="already_open">已开启</string> 
-     <string name="already_close">已关闭</string> 
-     <string name="teststr">点击按钮查看效果</string> 
          */
         public static final int app_name=0x7f050001;
+        /**      <string name="already_open">已开启</string> 
+     <string name="already_close">已关闭</string> 
+     <string name="teststr">点击按钮查看效果</string> 
+     <string name="already_open">已開啟</string> 
+     <string name="already_close">已關閉</string> 
+     <string name="teststr">點擊按鈕查看效果</string> 
+         */
         public static final int btn_switch=0x7f050002;
         public static final int btn_test=0x7f050003;
         /** Replace placeholder ID with your tracking ID

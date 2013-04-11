@@ -80,9 +80,6 @@ public class MainActivity extends Activity {
 		 * Set fontfamily
 		 */
 		versionText.setTypeface(tf);
-		((TextView)findViewById(R.id.switch_textview)).setTypeface(tf);
-		((TextView)findViewById(R.id.theme_textview)).setTypeface(tf);
-		((TextView)findViewById(R.id.test_textview)).setTypeface(tf);
 
 		ThemeTextView.setText(ThemeActivity.ThemeStringIds[FocusGalleryPosition]);
 		versionText.setText(getAppVersionName(this));

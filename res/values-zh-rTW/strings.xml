@@ -4,7 +4,6 @@
 <!--     <string name="already_close">已關閉</string> -->
 <!--     <string name="teststr">點擊按鈕查看效果</string> -->
 
-    <string name="app_name">WillCall Pro</string>
     <string name="btn_switch">開/關</string>
     <string name="btn_test">測試</string>
     <string name="ringing_Time">響鈴時長:</string>
