@@ -129,13 +129,16 @@ public final class R {
         public static final int Test=0x7f050005;
         public static final int about_copyright=0x7f05000f;
         public static final int accept=0x7f050006;
-        /**      <string name="already_open">已开启</string> 
-     <string name="already_close">已关闭</string> 
-     <string name="teststr">点击按钮查看效果</string> 
-     <string name="already_open">Open</string> 
+        /**      <string name="already_open">Open</string> 
      <string name="already_close">Closed</string> 
      <string name="teststr">Press the button to see the effect</string> 
      <string name="about_info">Will工作室版权所有</string> 
+     <string name="already_open">已开启</string> 
+     <string name="already_close">已关闭</string> 
+     <string name="teststr">点击按钮查看效果</string> 
+     <string name="already_open">已开启</string> 
+     <string name="already_close">已关闭</string> 
+     <string name="teststr">点击按钮查看效果</string> 
          */
         public static final int app_name=0x7f050001;
         public static final int btn_switch=0x7f050002;

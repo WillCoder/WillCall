@@ -2,6 +2,7 @@ package com.will.willcall;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
@@ -19,7 +20,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
