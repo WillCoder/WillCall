@@ -16,10 +16,12 @@ public final class R {
         public static final int push_right_in=0x7f040004;
         public static final int push_right_out=0x7f040005;
         public static final int shake=0x7f040006;
-        public static final int translate_1=0x7f040007;
-        public static final int translate_2=0x7f040008;
-        public static final int translate_3=0x7f040009;
-        public static final int translate_4=0x7f04000a;
+        public static final int theme_android_in_left_bottom=0x7f040007;
+        public static final int theme_android_in_left_top=0x7f040008;
+        public static final int translate_1=0x7f040009;
+        public static final int translate_2=0x7f04000a;
+        public static final int translate_3=0x7f04000b;
+        public static final int translate_4=0x7f04000c;
     }
     public static final class attr {
     }

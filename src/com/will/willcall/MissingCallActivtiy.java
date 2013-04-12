@@ -31,12 +31,20 @@ import com.google.analytics.tracking.android.EasyTracker;
  */
 public class MissingCallActivtiy extends Activity{
 
+	private class PageAction{
+		public final static int PAGE_UP = 0;
+		public final static int PAGE_DOWN = 1;
+		public final static int PAGE_NOTING = 1;
+	}
 	private int PageCount = 0;
 	private ArrayList<MissingCallAdapter> mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
 	private View ButtonToLeft = null;
 	private View ButtonToRight = null;
 	private int Theme = ThemeType.CLASSIC_THEME;
-	private Typeface tf = null;
+	
+	private Typeface tfGulim = null;
+	private Typeface tfClockopia = null;
+//	private Typeface tfAndroidClock = null;
 	
 	public class ThemeType{
 		public static final int CLASSIC_THEME = 0;
@@ -60,7 +68,9 @@ public class MissingCallActivtiy extends Activity{
 		}
 		else if(Theme == ThemeType.ANDROID_THEME)
 		{
-			tf = Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");
+			tfGulim 		= Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");
+			tfClockopia 	= Typeface.createFromAsset(getAssets(),"fonts/Clockopia.ttf");
+//			tfAndroidClock 	= Typeface.createFromAsset(getAssets(),"fonts/AndroidClock.ttf");
 			setContentView(R.layout.missing_call_dialog_android_theme);
 		}
 		else if(Theme == ThemeType.IPHONE_THEME)
@@ -72,7 +82,7 @@ public class MissingCallActivtiy extends Activity{
 		String incomingNumber = getIntent().getStringExtra("incomingNumber");
 //		mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
 		mMissingCallAdapter.add(new MissingCallAdapter(mCallTimer, incomingNumber));
-		setMissingInfo(mMissingCallAdapter.get(PageCount));
+		setMissingInfo(mMissingCallAdapter.get(PageCount), PageAction.PAGE_NOTING);
 //		TextView mcdText_1 = (TextView)findViewById(R.id.mcd_name_1);	
 //		TextView mcdText_2 = (TextView)findViewById(R.id.mcd_name_2);	
 //		TextView timeText = (TextView)findViewById(R.id.mcd_time);
@@ -127,7 +137,6 @@ public class MissingCallActivtiy extends Activity{
 					}
 					else if(Theme == ThemeType.WINDOWS_THEME)
 					{
-						startAnimation();
 						v.setVisibility(View.INVISIBLE);
 					}
 					else if(Theme == ThemeType.ANDROID_THEME)
@@ -147,7 +156,7 @@ public class MissingCallActivtiy extends Activity{
 						findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
 					}
 				}
-				setMissingInfo(mMissingCallAdapter.get(PageCount));
+				setMissingInfo(mMissingCallAdapter.get(PageCount),PageAction.PAGE_DOWN);
 			}
 		});
 //		ButtonToLeft.setVisibility(View.VISIBLE);
@@ -166,7 +175,6 @@ public class MissingCallActivtiy extends Activity{
 					}
 					else if(Theme == ThemeType.WINDOWS_THEME)
 					{
-						startAnimation();
 						v.setVisibility(View.INVISIBLE);
 					}
 					else if(Theme == ThemeType.ANDROID_THEME)
@@ -186,7 +194,7 @@ public class MissingCallActivtiy extends Activity{
 						findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
 					}
 				}
-				setMissingInfo(mMissingCallAdapter.get(PageCount));
+				setMissingInfo(mMissingCallAdapter.get(PageCount),PageAction.PAGE_UP);
 			}
 		});
 	}
@@ -194,7 +202,7 @@ public class MissingCallActivtiy extends Activity{
 	 * Set layout info
 	 * @param mMissingCallAdapter
 	 */
-	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter)
+	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter, int pageAction)
 	{
 		if(Theme == ThemeType.CLASSIC_THEME)
 		{
@@ -249,7 +257,7 @@ public class MissingCallActivtiy extends Activity{
 		}
 		else if(Theme == ThemeType.WINDOWS_THEME)
 		{
-			startAnimation();
+			startAnimationThemeWin();
 			long mCallTimer = mMissingCallAdapter.getTime();
 			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
 			TextView mcdText_1			= (TextView)findViewById(R.id.mcd_name_1);	
@@ -305,6 +313,7 @@ public class MissingCallActivtiy extends Activity{
 		}
 		else if(Theme == ThemeType.ANDROID_THEME)
 		{
+			startAnimationThemeAndroid(pageAction);
 			long mCallTimer = mMissingCallAdapter.getTime();
 			long Second = mCallTimer/1000;
 			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
@@ -320,9 +329,9 @@ public class MissingCallActivtiy extends Activity{
 			String ContactsName = getContactsInfo(incomingNumber);
 			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
 
-			mcdText_2.setTypeface(tf);
-			timeText.setTypeface(tf);
-			titleText.setTypeface(tf);
+			mcdText_2.setTypeface(tfGulim);
+			timeText.setTypeface(tfClockopia);
+			titleText.setTypeface(tfGulim);
 			if (ContactsName == null) {
 				mcdText_1.setText(R.string.unknow_contact_name);
 				mcdText_2.setText(incomingNumber);
@@ -359,9 +368,9 @@ public class MissingCallActivtiy extends Activity{
 		}
 	}
 	/**
-	 * Layout animation
+	 * Windows theme Layout animation
 	 */
-	private void startAnimation()
+	private void startAnimationThemeWin()
 	{
 		if(Theme != ThemeType.WINDOWS_THEME)
 		{
@@ -379,6 +388,31 @@ public class MissingCallActivtiy extends Activity{
 		BaseBlockView_3.startAnimation(animation_3);
 		Animation animation_4 = AnimationUtils.loadAnimation(this, R.anim.translate_4);
 		BaseBlockView_4.startAnimation(animation_4);
+
+	}
+	/**
+	 * Android theme Layout animation
+	 * In
+	 */
+	private void startAnimationThemeAndroid(int pageAction)
+	{
+		if(Theme != ThemeType.ANDROID_THEME)
+		{
+			return;
+		}
+		if(pageAction==PageAction.PAGE_DOWN)
+		{
+			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
+			Animation animation_4 = AnimationUtils.loadAnimation(this, R.anim.theme_android_in_left_top);
+			timeText.startAnimation(animation_4);
+		}
+		else if(pageAction==PageAction.PAGE_UP)
+		{
+			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
+			Animation animation_4 = AnimationUtils.loadAnimation(this, R.anim.theme_android_in_left_bottom);
+			timeText.startAnimation(animation_4);
+		}
+
 
 	}
 	/**
