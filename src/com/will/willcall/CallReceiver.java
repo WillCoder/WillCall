@@ -27,7 +27,7 @@ public class CallReceiver extends BroadcastReceiver{
 	    }
 		if(action.equals("android.intent.action.PHONE_STATE"))
 		{
-			if(!isPushServiceWork(context))
+//			if(!isPushServiceWork(context))
 			{
 				String phoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
 				TelephonyManager telephony = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -59,7 +59,7 @@ public class CallReceiver extends BroadcastReceiver{
 		ActivityManager myManager = (ActivityManager) context
 				.getSystemService(Context.ACTIVITY_SERVICE);
 		ArrayList<RunningServiceInfo> runningService = (ArrayList<RunningServiceInfo>) myManager
-				.getRunningServices(30);// 30是最大值
+				.getRunningServices(Integer.MAX_VALUE);// 30是最大值
 		for (int i = 0; i < runningService.size(); i++) {
 			if (runningService.get(i).service
 					.getClassName()

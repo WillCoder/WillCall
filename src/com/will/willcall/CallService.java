@@ -8,7 +8,7 @@ import android.telephony.TelephonyManager;
 
 public class CallService extends Service{
 
-	private TelephonyManager teleMgr = null;
+//	private TelephonyManager teleMgr = null;
 //	private Context context = null;
 	private int CallState = TelephonyManager.CALL_STATE_IDLE;
 	private CallTimer mCallTimer = null;
@@ -26,8 +26,8 @@ public class CallService extends Service{
 		// TODO Auto-generated method stub
 //		State = flags;
 		super.onStartCommand(intent, flags, startId);
-        teleMgr = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
-        teleMgr.listen(new mPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
+//		TelephonyManager teleMgr = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+//        teleMgr.listen(new mPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
 		if(intent!=null)
 		{
 	        if(intent.getAction()!=null)
