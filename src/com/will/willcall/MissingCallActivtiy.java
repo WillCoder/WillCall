@@ -24,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.MapBuilder;
+
 /**
  * 
  * @author Will
@@ -42,8 +44,8 @@ public class MissingCallActivtiy extends Activity{
 	private View ButtonToRight = null;
 	private int Theme = ThemeType.CLASSIC_THEME;
 	
-	private Typeface tfGulim = null;
-	private Typeface tfClockopia = null;
+	private static Typeface tfGulim = null;
+	private static Typeface tfClockopia = null;
 //	private Typeface tfAndroidClock = null;
 	
 	public class ThemeType{
@@ -52,6 +54,7 @@ public class MissingCallActivtiy extends Activity{
 		public static final int ANDROID_THEME = 2;
 		public static final int IPHONE_THEME = 3;
 	}
+//    public enum ThemeType{CLASSIC_THEME};
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -70,7 +73,6 @@ public class MissingCallActivtiy extends Activity{
 		{
 			tfGulim 		= Typeface.createFromAsset(getAssets(),"fonts/gulim.ttc");
 			tfClockopia 	= Typeface.createFromAsset(getAssets(),"fonts/Clockopia.ttf");
-//			tfAndroidClock 	= Typeface.createFromAsset(getAssets(),"fonts/AndroidClock.ttf");
 			setContentView(R.layout.missing_call_dialog_android_theme);
 		}
 		else if(Theme == ThemeType.IPHONE_THEME)
@@ -80,31 +82,8 @@ public class MissingCallActivtiy extends Activity{
 
 		long mCallTimer = getIntent().getLongExtra("time", -1);
 		String incomingNumber = getIntent().getStringExtra("incomingNumber");
-//		mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
 		mMissingCallAdapter.add(new MissingCallAdapter(mCallTimer, incomingNumber));
 		setMissingInfo(mMissingCallAdapter.get(PageCount), PageAction.PAGE_NOTING);
-//		TextView mcdText_1 = (TextView)findViewById(R.id.mcd_name_1);	
-//		TextView mcdText_2 = (TextView)findViewById(R.id.mcd_name_2);	
-//		TextView timeText = (TextView)findViewById(R.id.mcd_time);
-//		
-//		Time mTime = new Time();
-//		mTime.set(mCallTimer);
-//		
-//		String ContactsName = getContactsInfo(incomingNumber);
-//		if(ContactsName==null)
-//		{
-//			mcdText_1.setText(incomingNumber);
-//			mcdText_2.setVisibility(View.GONE);
-//		}
-//		else
-//		{
-//			mcdText_1.setText(ContactsName);
-//			mcdText_2.setText(incomingNumber);
-//			mcdText_2.setVisibility(View.VISIBLE);
-//		}
-////		phoneNumberText.setText(ContactsName);
-//		timeText.setText("响铃时长:"+mTime.second +"秒");
-//		timeText.setTextColor(getTimeColor(mTime.second));
 	}
 /*
  * If this Activity is called twice, onNewIntent work(non-Javadoc)
@@ -204,22 +183,20 @@ public class MissingCallActivtiy extends Activity{
 	 */
 	public void setMissingInfo(MissingCallAdapter mMissingCallAdapter, int pageAction)
 	{
+
 		if(Theme == ThemeType.CLASSIC_THEME)
 		{
-			long mCallTimer = mMissingCallAdapter.getTime();
+            EasyTracker.getInstance(this).send(MapBuilder.createEvent("Theme","CLASSIC",null,Long.valueOf(Theme)).build());
+            final long mCallTimer = mMissingCallAdapter.getTime();
 			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
-			TextView mcdText_1			= (TextView)findViewById(R.id.mcd_name_1);	
+            final long Second = mCallTimer/1000;
+
+            TextView mcdText_1			= (TextView)findViewById(R.id.mcd_name_1);
 			TextView mcdText_2			= (TextView)findViewById(R.id.mcd_name_2);	
 			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
 			ImageView reCallBreath		= (ImageView)findViewById(R.id.recall_breath);
-			
-			long Second = mCallTimer/1000;
-//			Time mTime = new Time();
-//			mTime.set(mCallTimer);
-//			mTime.
 			String ContactsName = getContactsInfo(incomingNumber);
-			
-	
+
 			if (ContactsName == null) {
 				mcdText_1.setText(incomingNumber);
 				mcdText_2.setVisibility(View.GONE);
@@ -235,28 +212,21 @@ public class MissingCallActivtiy extends Activity{
 
 			Animation alpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 			alpha.setDuration(getBreathTime(Second));
-//			reCallBreath.setImageResource(getBreathImage(mTime.second));
 			reCallBreath.setAnimation(alpha);
-//			Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-//			reCallButton.setAnimation(shake);
 			reCallBreath.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-	                String phone = incomingNumber;  
-//					if (isValid(phone)) {
-						Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
-						startActivity(callIntent);
-//					} else {
-//						Toast.makeText(v.getContext(), "非法电话号码", Toast.LENGTH_SHORT).show();
-//					}
+	                String phone = incomingNumber;
+                    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+                    startActivity(callIntent);
 				}
 			});
-//			phoneNumberText.setText(ContactsName);
 		}
 		else if(Theme == ThemeType.WINDOWS_THEME)
 		{
+            EasyTracker.getInstance(this).send(MapBuilder.createEvent("Theme","WINDOWS",null,Long.valueOf(Theme)).build());
 			startAnimationThemeWin();
 			long mCallTimer = mMissingCallAdapter.getTime();
 			final String incomingNumber = mMissingCallAdapter.getIncomingNumber();
@@ -269,8 +239,6 @@ public class MissingCallActivtiy extends Activity{
 			View BlockView_1 			= (View)findViewById(R.id.block_view_1);
 
 			long Second = mCallTimer/1000;
-//			Time mTime = new Time();
-//			mTime.set(mCallTimer);
 			
 			String ContactsName = getContactsInfo(incomingNumber);
 			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
@@ -313,6 +281,7 @@ public class MissingCallActivtiy extends Activity{
 		}
 		else if(Theme == ThemeType.ANDROID_THEME)
 		{
+            EasyTracker.getInstance(this).send(MapBuilder.createEvent("Theme","ANDROID",null,Long.valueOf(Theme)).build());
 			startAnimationThemeAndroid(pageAction);
 			long mCallTimer = mMissingCallAdapter.getTime();
 			long Second = mCallTimer/1000;
@@ -538,13 +507,13 @@ public class MissingCallActivtiy extends Activity{
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		EasyTracker.getInstance().activityStart(this);
+		EasyTracker.getInstance(this).activityStart(this);
 	}
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		EasyTracker.getInstance().activityStop(this);
+		EasyTracker.getInstance(this).activityStop(this);
 	}
 	
 }
