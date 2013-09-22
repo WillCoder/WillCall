@@ -515,10 +515,4 @@ public class MissingCallActivtiy extends Activity{
 		super.onStop();
 		EasyTracker.getInstance(this).activityStop(this);
 	}
-
-    @Override
-    protected void onPause() {
-        finish();
-        super.onPause();
-    }
 }
