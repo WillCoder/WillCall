@@ -4,3 +4,8 @@
 
 bin/
 tmp/
+gen/
+save/
+out/
+.idea/
+*.iml

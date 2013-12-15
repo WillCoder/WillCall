@@ -298,9 +298,9 @@ public class MissingCallActivtiy extends Activity{
 			String ContactsName = getContactsInfo(incomingNumber);
 			Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
 
-			mcdText_2.setTypeface(tfGulim);
+//			mcdText_2.setTypeface(tfGulim);
 			timeText.setTypeface(tfClockopia);
-			titleText.setTypeface(tfGulim);
+//			titleText.setTypeface(tfGulim);
 			if (ContactsName == null) {
 				mcdText_1.setText(R.string.unknow_contact_name);
 				mcdText_2.setText(incomingNumber);
