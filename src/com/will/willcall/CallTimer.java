@@ -14,11 +14,18 @@ public class CallTimer {
 	
 	private int TimerState = -1;
 	private long timeOffset = -1;
+
+    private String incomingNumber = null;
 	
 	public CallTimer()
 	{
 		this.clear();
 	}
+    public CallTimer(String incomingNumber)
+    {
+        this.incomingNumber = incomingNumber;
+        this.clear();
+    }
 	public void clear()
 	{
 		this.TimerState = STATE_IDLE;
@@ -43,6 +50,10 @@ public class CallTimer {
 		long ret = Calendar.getInstance().getTimeInMillis() - this.timeOffset;
 		return ret;
 	}
+    public String getIncomingNumber()
+    {
+        return incomingNumber;
+    }
 	public int getTimerState()
 	{
 		return this.TimerState;

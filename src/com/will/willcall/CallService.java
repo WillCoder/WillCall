@@ -85,6 +85,12 @@ public class CallService extends Service{
 		}
 		return newState;
     }
+
+    /**
+     *
+     * @param lastState
+     * @param incomingNumber this param is not available since 4.4
+     */
     private void callStateIDLE(int lastState,final String incomingNumber)
     {
 //    	Toast.makeText(this,"CALL_STATE_IDLE:"+incomingNumber,Toast.LENGTH_SHORT).show();
@@ -96,11 +102,15 @@ public class CallService extends Service{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					for(int i = 0;i<1000000;i++);
-		    	   	Intent intent = new Intent(getBaseContext(),MissingCallActivtiy.class);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Intent intent = new Intent(getBaseContext(),MissingCallActivtiy.class);
 		    	   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		    	   	intent.putExtra("time",time);
-		    	   	intent.putExtra("incomingNumber",incomingNumber);
+		    	   	intent.putExtra("incomingNumber",mCallTimer.getIncomingNumber());
 		    	   	startActivity(intent);
 				}
 			}).start();
@@ -118,7 +128,7 @@ public class CallService extends Service{
 //    	Toast.makeText(this,"CALL_STATE_RINGING:"+incomingNumber,Toast.LENGTH_SHORT).show();
 //    	if(lastState == TelephonyManager.CALL_STATE_IDLE)
 //    	{
-    		mCallTimer = new CallTimer();
+    		mCallTimer = new CallTimer(incomingNumber);
     		mCallTimer.start();
 //    	}
     }
