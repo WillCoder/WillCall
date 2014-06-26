@@ -1,11 +1,5 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar" />
-    <style name="dialog" parent="@android:style/Theme.Dialog">
-		<item name ="android:windowBackground">@color/transparent_background</item>
-	    <item name ="android:windowIsTranslucent">false</item>
-	    <item name ="android:backgroundDimEnabled">false</item>
-	    <item name ="android:windowNoTitle">true</item>
-	    <item name ="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-    </style>
+    <style name="PopTheme" parent="@android:style/Theme.Translucent.NoTitleBar" />
 </resources>

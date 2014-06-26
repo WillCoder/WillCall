@@ -37,7 +37,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:theme="@style/dialog" >
+            android:theme="@style/PopTheme" >
         </activity>
         <activity
             android:name="com.google.ads.AdActivity"

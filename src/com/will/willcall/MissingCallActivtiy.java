@@ -289,9 +289,8 @@ public class MissingCallActivtiy extends Activity{
 			TextView mcdText_1			= (TextView)findViewById(R.id.mcd_name_1);	
 			TextView mcdText_2			= (TextView)findViewById(R.id.mcd_name_2);	
 			TextView timeText			= (TextView)findViewById(R.id.mcd_time);
-			TextView titleText			= (TextView)findViewById(R.id.title_name);
 			
-			View reCallButton			= (View)findViewById(R.id.recall_btn);
+			View reCallButton			= findViewById(R.id.recall_btn);
 			ImageView ContactImageView	= (ImageView)findViewById(R.id.contact_image);
 			ImageView reCallIcon		= (ImageView)findViewById(R.id.btn_recall_icon);
 			
