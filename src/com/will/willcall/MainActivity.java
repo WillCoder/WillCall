@@ -1,21 +1,16 @@
 package com.will.willcall;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -32,34 +27,11 @@ public class MainActivity extends Activity {
     private int FocusGalleryPosition = 0;
     private Typeface tf = null;
 
-    private static final class RequestCode {
-        public static final int ThemeRequest = 0;
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_main_layout);
-        /**************************** Get screen shoot **********************/
-//		Intent intent = new Intent(this, MissingCallActivtiy.class);
-//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//		intent.putExtra("time", Long.valueOf(3000));
-//		intent.putExtra("incomingNumber", "1999999999");
-//		startActivity(intent);
-//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//		intent.putExtra("time", Long.valueOf(8000));
-//		intent.putExtra("incomingNumber", "2999999999");
-//		startActivity(intent);
-//		finish();
-
-        /********************************************************************/
-        /************************ AdMod add *********************************/
-        AdView adView = (AdView) this.findViewById(R.id.adView);
-        AdRequest mAdRequest = new AdRequest();
-        mAdRequest.setTesting(false);
-        adView.loadAd(mAdRequest);
-        /************************ AdMod add *********************************/
         FocusGalleryPosition = getSharedPreferences(getPackageName(),
                 MODE_PRIVATE).getInt("theme", FocusGalleryPosition);
         Switch = getSharedPreferences(getPackageName(), MODE_PRIVATE).getInt(
@@ -72,12 +44,15 @@ public class MainActivity extends Activity {
 
         TextView versionText = (TextView) findViewById(R.id.about_version);
         ToggleButton mButton = (ToggleButton) findViewById(R.id.button);
-        View mTestButton = (View) findViewById(R.id.test_button);
+        View mTestButton = findViewById(R.id.test_button);
 
         /**
          * Set fontfamily
          */
         versionText.setTypeface(tf);
+        ((TextView) findViewById(R.id.about_version)).setTypeface(tf);
+        ((TextView) findViewById(R.id.app_name)).setTypeface(tf);
+
         mTestButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -149,21 +124,5 @@ public class MainActivity extends Activity {
         // TODO Auto-generated method stub
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
-    }
-
-    public static String getAppVersionName(Context context) {
-        String versionName = "";
-        try {
-            // Get the package info
-            PackageManager pm = context.getPackageManager();
-            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
-            versionName = pi.versionName;
-            if (TextUtils.isEmpty(versionName)) {
-                return "";
-            }
-        } catch (Exception e) {
-            // Log.e(THIS_FILE, "Exception", e);
-        }
-        return versionName;
     }
 }

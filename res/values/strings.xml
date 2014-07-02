@@ -10,16 +10,9 @@
     <string name="btn_test">Test</string>
     <string name="ringing_Time">Ring length: </string>
     <string name="Preview">Preview</string>
-    <string name="accept">Accept</string>
-    <string name="setting_theme">Theme</string>
-    <string name="theme_classic">Classic</string>
-    <string name="theme_windows">Windows</string> 
-    <string name="theme_android">Android</string>
-    <string name="theme_iphone">Iphone</string>
-    <string name="theme_colorful">Colorful</string>
     <string name="unknow_contact_name">unknown</string>
     
     <string name="second">\"</string>
-    <string name="about_copyright">Copyright ® 2012 Will Studio. All Rights Reserved</string>
+    <string name="about_copyright">Copyright ® 2014 Will Studio. All Rights Reserved</string>
 
 </resources>

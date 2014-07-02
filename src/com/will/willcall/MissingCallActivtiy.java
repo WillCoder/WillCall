@@ -46,7 +46,6 @@ public class MissingCallActivtiy extends Activity {
 
     private static Typeface tfGulim = null;
     private static Typeface tfClockopia = null;
-//	private Typeface tfAndroidClock = null;
 
     public class ThemeType {
         public static final int CLASSIC_THEME = 0;
@@ -54,7 +53,6 @@ public class MissingCallActivtiy extends Activity {
         public static final int ANDROID_THEME = 2;
         public static final int IPHONE_THEME = 3;
     }
-//    public enum ThemeType{CLASSIC_THEME};
 
     @Override
     protected void onCreate(Bundle arg0) {

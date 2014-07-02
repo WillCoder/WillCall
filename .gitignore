@@ -1,7 +1,7 @@
 #################
 ## Eclipse
 #################
-
+.DS_Store
 bin/
 tmp/
 gen/
@@ -9,3 +9,4 @@ save/
 out/
 .idea/
 *.iml
+*.apk
