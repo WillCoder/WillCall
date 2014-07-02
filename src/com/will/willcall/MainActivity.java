@@ -120,6 +120,8 @@ public class MainActivity extends Activity {
 				intent.putExtra("time", Long.valueOf(55000));
 				intent.putExtra("incomingNumber", "4999999999");
 				v.getContext().startActivity(intent);
+                overridePendingTransition(R.anim.evo_enter,
+                        R.anim.evo_exit);
 			}
 		});
 
