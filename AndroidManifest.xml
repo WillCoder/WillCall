@@ -28,11 +28,6 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ThemeActivity"
-                android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-                android:theme="@style/AppTheme">
-        </activity>
-        <activity
                 android:name=".MissingCallActivtiy"
                 android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
                 android:excludeFromRecents="true"
