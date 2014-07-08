@@ -3,47 +3,40 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_gravity="bottom"
-              android:background="#2d2d2d"
+              android:background="#ffffff"
               android:orientation="vertical">
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="#33B5E5"
-            android:orientation="horizontal">
-    </LinearLayout>
-
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:orientation="horizontal">
 
         <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <ImageView
+            <com.will.willcall.RoundImageView
                     android:id="@+id/contact_image"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="left"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:layout_gravity="center"
                     android:layout_weight="0"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/contact_icon_android_theme"/>
+                    android:src="@drawable/contact_picture"/>
 
             <TextView
                     android:id="@+id/mcd_name_1"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="@string/unknow_contact_name"
-                    android:textColor="@android:color/white"
+                    android:textColor="#3d3d3d"
                     android:textSize="18sp"/>
         </LinearLayout>
 
@@ -54,18 +47,19 @@
                 android:orientation="vertical">
             <TextView
                     android:id="@+id/mcd_time"
-                    android:layout_width="130dp"
-                    android:layout_height="90dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:text="125”"
-                    android:textColor="@android:color/white"
+                    android:textColor="#3d3d3d"
                     android:textSize="56sp"/>
             <LinearLayout
                     android:id="@+id/recall_btn"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_trans"
                     android:orientation="horizontal"
@@ -77,20 +71,20 @@
                         android:layout_width="26dp"
                         android:layout_height="26dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:scaleType="fitCenter"
                         android:src="@drawable/recall_poor_win_theme"/>
 
                 <TextView
                         android:id="@+id/mcd_name_2"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="6dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:text="1999999999"
-                        android:textColor="@android:color/white"
+                        android:textColor="#3d3d3d"
                         android:textSize="26sp"/>
 
 
@@ -99,14 +93,14 @@
 
     </LinearLayout>
 
-  <!--  <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray">
-    </LinearLayout>-->
+    <!--  <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:layout_marginTop="8dp"
+              android:background="@android:color/darker_gray">
+      </LinearLayout>-->
 
 
     <LinearLayout
@@ -127,7 +121,7 @@
         <LinearLayout
                 android:id="@+id/page_divider"
                 android:layout_width="1dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="0"

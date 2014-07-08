@@ -42,24 +42,19 @@ public class MissingCallActivtiy extends Activity {
     private ArrayList<MissingCallAdapter> mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
     private View ButtonToLeft = null;
     private View ButtonToRight = null;
-    private int Theme = ThemeType.CLASSIC_THEME;
+    private int Theme = ANDROID_THEME;
 
     private static Typeface tfGulim = null;
     private static Typeface tfClockopia = null;
 
-    public class ThemeType {
-        public static final int CLASSIC_THEME = 0;
-        public static final int WINDOWS_THEME = 1;
-        public static final int ANDROID_THEME = 2;
-        public static final int IPHONE_THEME = 3;
-    }
+    public static final int ANDROID_THEME = 2;
+
 
     @Override
     protected void onCreate(Bundle arg0) {
         // TODO Auto-generated method stub
         super.onCreate(arg0);
         setContentView(R.layout.missing_call_dialog_android_theme);
-        Theme = getSharedPreferences(getPackageName(), MODE_PRIVATE).getInt("theme", ThemeType.CLASSIC_THEME);
         tfGulim = Typeface.createFromAsset(getAssets(), "fonts/gulim.ttc");
         tfClockopia = Typeface.createFromAsset(getAssets(), "fonts/Clockopia.ttf");
         long mCallTimer = getIntent().getLongExtra("time", -1);
@@ -92,20 +87,10 @@ public class MissingCallActivtiy extends Activity {
                 PageCount++;
                 ButtonToLeft.setVisibility(View.VISIBLE);
                 if (PageCount == mMissingCallAdapter.size() - 1) {
-                    if (Theme == ThemeType.CLASSIC_THEME) {
-                        v.setVisibility(View.GONE);
-                    } else if (Theme == ThemeType.WINDOWS_THEME) {
-                        v.setVisibility(View.INVISIBLE);
-                    } else if (Theme == ThemeType.ANDROID_THEME) {
-                        findViewById(R.id.page_divider).setVisibility(View.GONE);
-                        v.setVisibility(View.GONE);
-                    } else if (Theme == ThemeType.IPHONE_THEME) {
-                        v.setVisibility(View.GONE);
-                    }
+                    findViewById(R.id.page_divider).setVisibility(View.GONE);
+                    v.setVisibility(View.GONE);
                 } else {
-                    if (Theme == ThemeType.ANDROID_THEME) {
-                        findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
-                    }
+                    findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
                 }
                 setMissingInfo(mMissingCallAdapter.get(PageCount), PageAction.PAGE_DOWN);
             }
@@ -119,20 +104,10 @@ public class MissingCallActivtiy extends Activity {
                 PageCount--;
                 ButtonToRight.setVisibility(View.VISIBLE);
                 if (PageCount == 0) {
-                    if (Theme == ThemeType.CLASSIC_THEME) {
-                        v.setVisibility(View.GONE);
-                    } else if (Theme == ThemeType.WINDOWS_THEME) {
-                        v.setVisibility(View.INVISIBLE);
-                    } else if (Theme == ThemeType.ANDROID_THEME) {
-                        findViewById(R.id.page_divider).setVisibility(View.GONE);
-                        v.setVisibility(View.GONE);
-                    } else if (Theme == ThemeType.IPHONE_THEME) {
-                        v.setVisibility(View.GONE);
-                    }
+                    findViewById(R.id.page_divider).setVisibility(View.GONE);
+                    v.setVisibility(View.GONE);
                 } else {
-                    if (Theme == ThemeType.ANDROID_THEME) {
-                        findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
-                    }
+                    findViewById(R.id.page_divider).setVisibility(View.VISIBLE);
                 }
                 setMissingInfo(mMissingCallAdapter.get(PageCount), PageAction.PAGE_UP);
             }
@@ -161,7 +136,7 @@ public class MissingCallActivtiy extends Activity {
         TextView timeText = (TextView) findViewById(R.id.mcd_time);
 
         View reCallButton = findViewById(R.id.recall_btn);
-        ImageView ContactImageView = (ImageView) findViewById(R.id.contact_image);
+        RoundImageView ContactImageView = (RoundImageView) findViewById(R.id.contact_image);
         ImageView reCallIcon = (ImageView) findViewById(R.id.btn_recall_icon);
 
         String ContactsName = getContactsInfo(incomingNumber);
@@ -180,7 +155,7 @@ public class MissingCallActivtiy extends Activity {
         if (ContactsPhoto != null) {
             ContactImageView.setImageBitmap(ContactsPhoto);
         } else {
-            ContactImageView.setImageResource(R.drawable.contact_icon_win_theme);
+            ContactImageView.setImageResource(R.drawable.contact_picture);
         }
         reCallIcon.setImageResource(getReCallIcon(Second));
         timeText.setText(Long.toString(Second) + getString(R.string.second));
@@ -204,7 +179,7 @@ public class MissingCallActivtiy extends Activity {
      * In
      */
     private void startAnimationThemeAndroid(int pageAction) {
-        if (Theme != ThemeType.ANDROID_THEME) {
+        if (Theme != ANDROID_THEME) {
             return;
         }
         if (pageAction == PageAction.PAGE_DOWN) {

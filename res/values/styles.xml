@@ -7,11 +7,6 @@
 
 
     <style name="MainTextStyle">
-        <item name="android:shadowColor">#dd3d3d3d</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-        <item name="android:background">@null</item>
     </style>
 
 </resources>
