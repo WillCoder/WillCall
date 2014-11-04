@@ -3,10 +3,12 @@
 #################
 .DS_Store
 bin/
+build/
 tmp/
 gen/
 save/
 out/
 .idea/
+.*/
 *.iml
 *.apk

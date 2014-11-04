@@ -9,6 +9,10 @@ buildscript {
 
 apply plugin: 'android'
 
+repositories {
+    mavenCentral()
+}
+
 android {
     compileSdkVersion 19
     buildToolsVersion '19.1.0'
@@ -27,10 +31,10 @@ android {
 }
 
 dependencies {
+    compile 'com.jakewharton:butterknife:6.0.0'
     compile 'com.android.support:support-v4:20.0.0'
-//    compile files('libs/GoogleAdMobAdsSdk-6.4.1.jar')
-    compile files('libs/libGoogleAnalyticsServices.jar')
-    compile ('com.google.android.gms:play-services:4.3.23'){
-        exclude module:'gms.ads'
+    compile('com.google.android.gms:play-services:4.3.23') {
+        exclude module: 'gms.ads'
     }
+    compile files('libs/libGoogleAnalyticsServices.jar')
 }

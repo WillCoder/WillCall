@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.3.23/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="7676c0cb230efa6ac41c47867d372ed5913029d4">
+        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/classes-b1324fd92306a76c7b1b8e1aa967163438c33aa3.jar" />
+    </item>
+    <item
         jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="19.1.0"
@@ -9,11 +16,11 @@
         <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-b5f0b12957568022449e0ffaecd973713d2cb351.jar" />
     </item>
     <item
-        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.3.23/classes.jar"
+        jar="/Users/mhdu/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.0.0/3a10b25b6820e19102e118711afe6a66c0bae123/butterknife-6.0.0.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="7676c0cb230efa6ac41c47867d372ed5913029d4">
-        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/classes-b1324fd92306a76c7b1b8e1aa967163438c33aa3.jar" />
+        sha1="3a10b25b6820e19102e118711afe6a66c0bae123">
+        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/butterknife-6.0.0-8e8cb93646c475c0c46756631a50971c4b16a62d.jar" />
     </item>
     <item
         jar="/Users/mhdu/Workspace/WillCall/libs/libGoogleAnalyticsServices.jar"

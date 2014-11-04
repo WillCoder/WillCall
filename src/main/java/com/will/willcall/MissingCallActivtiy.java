@@ -1,8 +1,5 @@
 package com.will.willcall;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
@@ -11,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -25,6 +21,12 @@ import android.widget.TextView;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.MapBuilder;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * @author Will
@@ -40,8 +42,13 @@ public class MissingCallActivtiy extends Activity {
 
     private int PageCount = 0;
     private ArrayList<MissingCallAdapter> mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
-    private View ButtonToLeft = null;
-    private View ButtonToRight = null;
+
+    @InjectView(R.id.btn_to_left)
+    View ButtonToLeft;
+
+    @InjectView(R.id.btn_to_right)
+    View ButtonToRight;
+
     private int Theme = ANDROID_THEME;
 
     private static Typeface tfGulim = null;
@@ -54,8 +61,11 @@ public class MissingCallActivtiy extends Activity {
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.missing_call_dialog_android_theme);
+        ButterKnife.inject(this);
+
         tfGulim = Typeface.createFromAsset(getAssets(), "fonts/gulim.ttc");
         tfClockopia = Typeface.createFromAsset(getAssets(), "fonts/Clockopia.ttf");
+
         long mCallTimer = getIntent().getLongExtra("time", -1);
         String incomingNumber = getIntent().getStringExtra("incomingNumber");
         mMissingCallAdapter.add(new MissingCallAdapter(mCallTimer, incomingNumber));
@@ -74,8 +84,6 @@ public class MissingCallActivtiy extends Activity {
         String incomingNumber = intent.getStringExtra("incomingNumber");
 
         mMissingCallAdapter.add(new MissingCallAdapter(mCallTimer, incomingNumber));
-        ButtonToLeft = (View) findViewById(R.id.btn_to_left);
-        ButtonToRight = (View) findViewById(R.id.btn_to_right);
         ButtonToRight.setVisibility(View.VISIBLE);
         ButtonToRight.setOnClickListener(new OnClickListener() {
 
@@ -93,7 +101,6 @@ public class MissingCallActivtiy extends Activity {
                 setMissingInfo(mMissingCallAdapter.get(PageCount), PageAction.PAGE_DOWN);
             }
         });
-//		ButtonToLeft.setVisibility(View.VISIBLE);
         ButtonToLeft.setOnClickListener(new OnClickListener() {
 
             @Override
