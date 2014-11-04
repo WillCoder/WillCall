@@ -40,7 +40,11 @@ public class MissingCallActivtiy extends Activity {
         public final static int PAGE_NOTING = 1;
     }
 
+    public static final int ANDROID_THEME = 2;
+    private static Typeface tfClockopia = null;
+
     private int PageCount = 0;
+    private int Theme = ANDROID_THEME;
     private ArrayList<MissingCallAdapter> mMissingCallAdapter = new ArrayList<MissingCallAdapter>();
 
     @InjectView(R.id.btn_to_left)
@@ -49,21 +53,12 @@ public class MissingCallActivtiy extends Activity {
     @InjectView(R.id.btn_to_right)
     View ButtonToRight;
 
-    private int Theme = ANDROID_THEME;
-
-    private static Typeface tfGulim = null;
-    private static Typeface tfClockopia = null;
-
-    public static final int ANDROID_THEME = 2;
-
-
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.missing_call_dialog_android_theme);
         ButterKnife.inject(this);
 
-        tfGulim = Typeface.createFromAsset(getAssets(), "fonts/gulim.ttc");
         tfClockopia = Typeface.createFromAsset(getAssets(), "fonts/Clockopia.ttf");
 
         long mCallTimer = getIntent().getLongExtra("time", -1);
@@ -147,9 +142,7 @@ public class MissingCallActivtiy extends Activity {
         String ContactsName = getContactsInfo(incomingNumber);
         Bitmap ContactsPhoto = getContactsPhoto(incomingNumber);
 
-//			mcdText_2.setTypeface(tfGulim);
         timeText.setTypeface(tfClockopia);
-//			titleText.setTypeface(tfGulim);
         if (ContactsName == null) {
             mcdText_1.setText(R.string.unknow_contact_name);
             mcdText_2.setText(incomingNumber);
