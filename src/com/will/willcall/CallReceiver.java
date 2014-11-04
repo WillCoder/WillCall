@@ -17,7 +17,7 @@ public class CallReceiver extends BroadcastReceiver{
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		// TODO Auto-generated method stub
+
 		String action = intent.getAction();
 	    if(action.equals("android.intent.action.BOOT_COMPLETED"))
 	    {

@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 Intent intent = new Intent(v.getContext(),
                         MissingCallActivtiy.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
-                // TODO Auto-generated method stub
+
                 setSwitchState(isChecked);
             }
         });
@@ -114,14 +114,12 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
         EasyTracker.getInstance(this).activityStart(this);
     }
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }

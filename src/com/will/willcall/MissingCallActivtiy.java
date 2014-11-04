@@ -52,7 +52,6 @@ public class MissingCallActivtiy extends Activity {
 
     @Override
     protected void onCreate(Bundle arg0) {
-        // TODO Auto-generated method stub
         super.onCreate(arg0);
         setContentView(R.layout.missing_call_dialog_android_theme);
         tfGulim = Typeface.createFromAsset(getAssets(), "fonts/gulim.ttc");
@@ -69,7 +68,6 @@ public class MissingCallActivtiy extends Activity {
      */
     @Override
     protected void onNewIntent(Intent intent) {
-        // TODO Auto-generated method stub
         super.onNewIntent(intent);
 
         long mCallTimer = intent.getLongExtra("time", -1);
@@ -83,7 +81,7 @@ public class MissingCallActivtiy extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 PageCount++;
                 ButtonToLeft.setVisibility(View.VISIBLE);
                 if (PageCount == mMissingCallAdapter.size() - 1) {
@@ -100,7 +98,7 @@ public class MissingCallActivtiy extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 PageCount--;
                 ButtonToRight.setVisibility(View.VISIBLE);
                 if (PageCount == 0) {
@@ -165,7 +163,7 @@ public class MissingCallActivtiy extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 String phone = incomingNumber;
                 Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
                 startActivity(callIntent);
@@ -284,32 +282,14 @@ public class MissingCallActivtiy extends Activity {
         return ret;
     }
 
-    /**
-     * @param time second
-     * @return
-     */
-    public long getBreathTime(long time) {
-        long ret = 0;
-        if (time <= 5) {
-            ret = 900;
-        } else if (time <= 10 && time > 5) {
-            ret = 1000;
-        } else if (time > 10) {
-            ret = 1100;
-        }
-        return ret;
-    }
-
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
         EasyTracker.getInstance(this).activityStart(this);
     }
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
