@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.3.23/classes.jar"
+        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.3.23/jars/classes.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="7676c0cb230efa6ac41c47867d372ed5913029d4">
-        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/classes-b1324fd92306a76c7b1b8e1aa967163438c33aa3.jar" />
+        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/classes-b00fd477afc786a1374012c4f85b50ed0164784c.jar" />
     </item>
     <item
-        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/classes.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-b5f0b12957568022449e0ffaecd973713d2cb351.jar" />
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/classes-8e835bba9d09e14fc294c6cce21aad918dbcefc1.jar" />
     </item>
     <item
         jar="/Users/mhdu/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.0.0/3a10b25b6820e19102e118711afe6a66c0bae123/butterknife-6.0.0.jar"
@@ -23,25 +23,25 @@
         <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/butterknife-6.0.0-8e8cb93646c475c0c46756631a50971c4b16a62d.jar" />
     </item>
     <item
+        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-14fdf705bb80b712c926a754379970c41ab32f52.jar" />
+    </item>
+    <item
+        jar="/Users/mhdu/Workspace/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-f209c0ea38ea478ff3a09dbd42e864ed874dc36c.jar" />
+    </item>
+    <item
         jar="/Users/mhdu/Workspace/WillCall/libs/libGoogleAnalyticsServices.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="9f1d8489b6d557be8d7fecf6ae070b5718366677">
         <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/libGoogleAnalyticsServices-10b015ed9e6e543448dc0b3bdf7248bd5cecabb9.jar" />
-    </item>
-    <item
-        jar="/Users/mhdu/Workspace/WillCall/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/classes-11be2e28279bc790a47dc7277634415df2944f2d.jar" />
-    </item>
-    <item
-        jar="/Users/mhdu/Workspace/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="/Users/mhdu/Workspace/WillCall/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-7d8aff58667d096eca1db60271693353707e8a5b.jar" />
     </item>
 
 </items>
